@@ -1,0 +1,29 @@
+-Create folder ...npm...app.js
+- Set dependencies 
+ "dependencies": {
+    "express":"*", 
+    "body-parser":"*", 
+    "ejs":"2.4.2", 
+    "morgan":"*", 
+    "neo4j-dirver":"*"
+  }
+-npm install
+
+-npm install nodemon -g 
+-$ nodemon
+
+
+-var neo4j = require('neo4j-driver); 
+-we connet to neo4j using the bolt protocol 
+var driver = neo4j.driver
+
+var driver = neo4j.driver('bolt:://127.0.0.1',neo4j.auth.basic('neo4j', 'password'));
+
+var session = driver.session(); 
+
+session
+      .run(the query )
+      .then(function(result)//what to do when the query is done)
+      .catch(function(err){//case of error})
+
+ when we return nodes, we can access the properties with node.properties

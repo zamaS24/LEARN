@@ -1,0 +1,39 @@
+
+
+Chroma with langchain (LangChain with chroma db docs directly): 
+    - you can here use the embedding model 
+    - combine it with Chroma
+    - it creates a colleciotn named langchain
+
+
+
+Chroma: (Chroma db documentation direclty man )
+    - client (the database) 
+    - persistent client (we will have persistent directory)
+    - client may have multiple collections
+    - collection is a : list of documents, list of ids
+    - collection.add(documents=, ids=)
+
+
+Passing Chroma Client to langchain : 
+    langchain_chroma = Chroma(
+        client=persistent_client,
+        collection_name="collection_name",
+        embedding_function=embedding_function,
+    )
+
+
+
+Documents: 
+    - loader:  pdf, web, ..; etc
+    - langchain doucument : 
+
+
+
+# FUTURE WORK AND CONSIDERATION: 
+    -> deploying
+    -> how to measure the amount of GPU needed for such tasks
+    -> messaging templates, and parameters of the model, like temperature and all . 
+    -> memory in the conversation 
+    -> Agentic RAG. 
+    -> Evaluation

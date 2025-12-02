@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+      
+    </style>
+<script src="d3.v7.js"></script>
+</head>
+
+<body>  
+
+<p>Text</p>
+<p>Another </p>
+<p></p>
+<p></p>
+
+<div id="div1"></div>
+<br>
+<div></div>
+
+<script type="module">     
+
+
+let myData = [1,3,3,4,5];
+
+
+
+
+d3.selectAll('p')
+    .data(myData)
+        .html(function(d,i){
+
+            console.log(d)
+            return `<h2> Yup this is it ${d}` ;    
+        }) 
+    .style('color', 'red')
+    
+
+    // For each unbined data to element
+    .enter() 
+    .append('p') // Create the element
+        .style('color', 'green')
+        .on('mouseover', () => {
+            console.log('Mouse over event fired! ')            
+        })
+
+        .text(function (d,i){
+            
+            console.log(d)
+            return d;
+        })
+        
+
+    d3.selectAll('div')
+        .on('mouseover', ()=>{
+            d3.select(this).style('background-color', 'red')
+        })
+
+        .on('mouseout', function(){
+            d3.select(this)
+                .style('background-color', 'black')
+        })
+        
+</script>
+</body>
+</html>
+

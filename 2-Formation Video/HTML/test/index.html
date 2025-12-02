@@ -1,0 +1,258 @@
+<!-- 
+    Il faut toujours penser aux différents types de navigateurs qui existent dehors de cette saison. 
+-->
+
+<!DOCTYPE html>
+<head>
+    <title>myCash &dollar;</title>
+    
+    <meta charset="UTF-8">
+    <!-- <style>
+        table{border-collapse:collapse;}
+        th,td{border:5px solid rgb(26, 74, 233); padding:5;}
+        .container-onglets{
+            background: #f1f1f1;
+            width: 100%;
+            height: 300%; 
+            display: flex; 
+            border-bottom: 1px solid #333; 
+        }
+
+        .onglets{
+            width: 220px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            font-size: 22px; 
+            font-weight:700; 
+            cursor: pointer; 
+        }
+
+    </style> -->
+    <style>
+        /* ceci est juste un commentaire*/
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Test de nav</h1>
+    <nav>
+        <ul>
+           <li><a href="#cite">Cite</a></li>
+           <li><a href="#table">Table</a></li>
+           <li><a href="#form">Form</a></li>
+           <li><a href="#footer">Footer</a></li>
+           <li><a href="#images">Images</a></li>
+           <li><a href="#sonvideo">Son et Vidéo</a></li>
+           <li><a href="#structurer">Structurer page web</a></li>
+           <li><a href="#intro_design">Introduction Design</a></li>
+        </ul>
+    </nav>
+    
+    <h1 id="cite">Tryinig the cite tag</h1>
+    <cite> OMARI Hamza, Student in Artificial Intelligence and Computer Vision</cite>
+
+    <button onclick="change_text()">Change text</button>
+    <hr>
+
+    <p id="demo">A Paragraph</p>
+    <button type="button" onclick="myFunction()">Try it</button>
+
+    <table id="table">
+        <caption>
+            Un tableau montrant les jeux vidéo que OMARI Hamza prèfère. 
+        </caption>
+
+        
+        <tr> <!-- Headers -->
+            <th>Jeu</th>
+            <th>Prix</th>
+            <th>Qualité</th>
+        </tr>
+        
+        <tr> <!-- Premier jeu -->
+            <td rowspan="2">GTA V</td>
+            <td>10 &euro;</td>
+            <td>5 étoiiles</td>
+        </tr>
+       
+        <tr>  <!-- Deuxième jeu -->
+            <td>Gratuit</td>
+            <td>4,5 étoiles</td>
+        </tr>
+        <tr>
+            <td>Rocket League</td>
+            <td colspan="2">Gratuit</td>
+            <!-- <td>4 étloiles</td>     -->
+        </tr>
+        <tfoot>
+            <tr>
+                <td>tfoot col</td>
+            </tr>
+        </tfoot>
+    </table>
+ 
+    <hr>
+
+    <h1 id="form">Formulaire avec méthode get</h1>
+    <form method="get" name="student_list" action="" >
+        <label for="nom">Nom</label>
+        <input id="nom" name="nom" placeholder="Entrez votre nom" pattern="[a-Z]" required>
+
+        <label for="mdp">Mot de passe</label>
+        <input id="mdp" name="password" placeholder="Mot de passe">
+        <br>
+        Contribution<input type="radio" name="choice">Oui<input type="radio" name="choice">Non<Br>
+        Choisissez une couleur<input type="color"><br>
+        Date de naissance<input type="date" name="birthday"><br>
+        Numéro de téléphone<input type="number" name="phonenumber"><br>
+        Valider<input type="submit"> <input type="reset" value="Effacer">
+    </form>
+    <button onclick="document.location='#t'">Revinir en Haut</button>
+   
+    <hr>
+
+    <h1> Liste des étudiants de la section 1 MIV </h1>
+    <table>
+        <tr> <th>Nom    </th> <th>Prénom    </th> <th>Date de naissance </th></tr>
+        <tr> <td>OMARI  </td> <td>Hamza     </td> <td>04 Janvier 2001   </td> </tr>
+        <tr> <td>ZAGHDAR</td> <td>Abderrahim</td> <td>xx Xxx xx         </td> </tr>
+    </table>
+
+    <hr>
+
+    <h1>Formulaires </h1>
+    <form method="post" id="id_form" action="">
+        <fieldset form="id_form">
+            <legend>Ma section</legend>
+            Nom: <input type="text" name="username">
+            <input type="submit" name="valid_form" value="Envoyer">
+            <p>Code srouce</p><br>
+            <textarea name="textarea" id="ta_id" cols="60" rows="10" placeholder="Code ici" wrap="hard"></textarea>
+            <button type="button">Analyser</button>
+        </fieldset>
+    </form>
+
+    <select name="choixOS" id="id_select" size="1">
+        <option value="windows_val">Windows</option>
+        <option value="linux_val">Linux</option>
+        <option value="mac_val">Mac OS</option>
+    </select>
+    
+    <select name="choixJeu" id="id_sel">
+        <optgroup label="RPG">
+            <option value="Final Fantasy">Final Fantasy </option>
+            <option value="Genshin Impact">Genshin Impact</option>
+            <option value="The Legend of Zelda">The Legend of Zelda</option>
+        </optgroup>
+        
+        <optgroup label="FPS">
+            <option value="Valorant">Valorant</option>
+            <option value="CS:GO">CS:GO</option>
+            <option value="Fortnite">Fortnite</option>
+        </optgroup>
+
+    </select>
+
+    <button type="button">Cliquez ici</button>
+
+    <hr>
+    <h1 id="images">Images</h1>
+    <!-- <img src="saitama.jpg" alt="Image de saitama" width="600" height="auto"> -->
+
+    <figure>
+        <img src="saitama.jpg" alt="Imade de saitama" width="600" height="auto">
+        <figcaption>Image téléchargé de : <a href="https://www.wallpaperflare.com/">Wallpaperflare</a></figcaption>
+    </figure>
+
+    <img src="carte.jpg" alt="carte" usemap="#worldmap">
+
+    <map name="#worldmap">
+        <area href="saitama.jpg" shape="rect" coords="0,0 200,200"> 
+        <!--        ici on aurait pu mettre carte-rouge.jpg -->
+        <!-- On peut mettre plusieurs area ici!  -->
+    </map>
+
+    <hr>
+
+    <h1 id="sonvideo"> Son et Vidéo</h1>
+    <h2> Son </h2>
+    <audio controls>
+        <source src="song.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio. 
+    </audio>
+
+    <h2> Video</h2>
+
+    <video controls width="720" height="auto">
+        <source src="video.mp4" type="video/mp4">
+        Votre navigateur ne prend pas en charge la vidéo HTML
+    </video>
+
+    <hr>
+    <h1 id="structurer">Structurer page Web</h1>
+    <div>
+        <p>Lorem ipsum dolor sit amet, <span>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    </div>
+    <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <a href="https://www.facebook.com">Un lien...</a>
+
+        <aside>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex <span class="css-after-to-edit"> ea commodo consequat </span>. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        </aside>
+
+    </div>
+
+    <hr>
+
+    <h1 id="intro_design">Introduction Design</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex <span class="css-after-to-edit"> ea commodo consequat </span>. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    
+    <!-- Le pieds de page -->
+    <footer id="footer">
+       <strong> <p>Copyright &copy; OMARI Hamza 2023</p> </strong>
+    </footer>
+    
+   <!-- Un, deux ou trois projets tu vois? Merci beaucoup en tous les cas lol. See you later okay. I hope
+    So this has nothing to do about it okay. I cannot make it happen with you.  -->
+
+    <script>
+        function myFunction() {
+          document.getElementById("demo").innerHTML = "Paragraph changed.";
+        }
+
+        
+
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

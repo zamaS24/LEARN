@@ -1,0 +1,60 @@
+<!--
+    - <code> : Ecrire du code comme printf("Hello world"); 
+    - <kbd> : Pour dire une toucher calier. Attention peut etre que ca change pas le text mais il faut penser à 
+            la sémantique toujours. 
+    - <meter> : elle prend plusieurs attributs
+            value(valuer)
+            min(la valeure minimale)
+            max(la valeure maximale)
+            high(seuil où la valeure devient "haute")
+            low(seuil où la valeure devient "basse")
+            optimum(seuil où la valeure est optimal)
+    - <output> : On va avoir surtout l'utilité dans les formulaires. Résultat d'un calcul, résultat d'un programme..
+    - <pre> : avoir le text tel qu'il est dans le document. ei ton code. Mem s'il ya des espace de 'indent lines'
+    - <ruby> : ありがとう <rt> Arigato. Voir exemple et n'oublie pas de penser sémantique et non pas visuel. 
+    - <samp> : résultat, voir l'exemple. 
+    - <time> : on peut afficher année, mois, jour
+            les 3 à la fois 
+            Date + heure 
+            datetime="2018-01-25 11:07:01"
+    
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>FV HTML Formatage technique </title>
+    </head>
+<body>
+    <p> 
+        Dire bonjour : <code>printf("Hello world! \n"); </code><br>
+        Enregister le document avec le raccourci <kbd>Ctrl + S</kbd><br>
+        le meter : <meter value="0.25" optimum ="37.4" >37 degrés</meter><br>
+        2 + 4  = <output>6</output>
+        Bonjour tout le monde    ici ça marche pas.<br><pre>
+        Bonjour tout le monde   ici ça marche très bien lol. 
+                c'est la balise pre 
+                    pre
+        </pre>
+        <p>
+            <ruby> 
+                あ <rt>A</rt>
+                り <rt>Ri</rt>
+                が <rt>Ga</rt>
+                と <rt>To</rt>
+                う <rt>U</rt>
+            <ruby> 
+        </p>
+
+        <code>printf("Hello world! \n"); </code><br>
+        <p> Va afficher -> <samp>Hello world</samp></p>
+        <p> Début du concours le <time datetime="2018-01-25 11:04:16">25 Janvier 2018</time></p>
+        <p> Informatique : <var> x</var> = <var>14</var></p>
+        <p> Mathématique : <var> x <sup>2</sup></var> +5 </p>
+        
+        <code> Hello world ! </code>
+    </p>
+
+</body>
+</html>

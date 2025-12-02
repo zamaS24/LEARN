@@ -1,0 +1,59 @@
+Lisf of essential vim motions that are also combined with vscode: 
+
+- deleting the current line 
+    dd 
+
+
+- select and copy multiple stuff start selecting stuff 
+    v (to go to the mode of selecting)
+    yy (to copy it to clipboard I guess) 
+    or 
+
+
+    - go the first of the line 
+        0 or (I, but will put you on the first character and it's on insert mode )
+
+copy the current line 
+    yy  
+
+
+Beginning of the first character of the line 
+    _ (it's underscore)
+
+    
+Indent to the right of the block 
+    < for indent left
+    > for indent right 
+
+Copy the whole line 
+    dd : copy the whole line, and when you paste it with p it will pop it down the current cursor 
+
+
+   the this is the real time of it okay ? as been programmin all of his life in this matter if you already don't know about it okay  
+   print('this is the real value of it right ? ')
+
+    cout the real values of this one right ? 
+    print('somethign happening in the real time of it okay ? ')
+
+
+
+
+
+
+
+
+
+
+
+if you try to do something 
+now thank you so much for using the vim extnesion in the real time of it okay.
+I thank you so much for thsi one too mate okay. 
+
+
+
+
+
+Making it easier: use clipboard=unnamedplus
+
+If Vim is compiled with clipboard support, you can configure it so that the y, d, p commands use the system clipboard by default:
+

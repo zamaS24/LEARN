@@ -1,0 +1,195 @@
+-----------------  [fonctionnement balise] 
+balise classique <ouverture> <fermuture>
+balise orpheline <baliseorpheline>  . ei ell n'a pas une fermuture.
+
+
+
+-----------------  [Formatage texte]
+<p title="title floatant">
+<hr> une ligne séparante 3schools: Defines a thematic change in the content
+<strong> 
+<em>
+<del> Deleted text
+<ins> Inserted text
+<mark> Marked 
+<i> Italic
+<h1> .... jusqu'a <h6>
+<q> short quotation
+<cite>  citer un nom de livre ...;etc . 
+<blockquote> Defines a section that is quoted from another source
+<details> <summary> 
+
+<a href="https://omarihamza.dz"> nom du site ici </a>
+<a href="https://omarihamza.dz" title="Site personnel de omari hamza lol"> nom du site ici </a>
+<a href="https://google.com" target="_blank"> nom du site ici </a> Ouvrir la page dans un nouvel onglet. 
+
+<abbr title="Hyper Text Markup Language">HTML</abbr>
+<address>
+<a href="mailto:omarihamza200@gmail.com">Envoyer moi un email</a>
+- Ecrire en arabe. Je suis si féniant de ne le noter ici. 
+<dfn> : pour la définition 
+- <dl> : définition liste
+    <dt> </dt>
+    <dd> </dt>
+
+    <dt> </dt>
+    <dd> </dt> 
+
+<dialog> : voir formation javascript
+<progress> pour afficher un etat. 
+<sub> indice
+<sub> exposant
+<wbr> on casse un mot.
+
+<title>My Page Title</title> for the title
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico"> for the icon
+
+-----------------  [Formatage Technique]
+
+- <code> : Ecrire du code comme printf("Hello world"); 
+- <kbd> : Pour dire une touche clavier. Attention peut etre que ca change pas le text mais il faut penser à la sémantique toujours. exemple : <kbd> Ctrl + S </kbd>
+- <meter> : elle prend plusieurs attributs
+    value(valuer)
+    min(la valeure minimale)
+    max(la valeure maximale)
+    high(seuil où la valeure devient "haute")
+    low(seuil où la valeure devient "basse")
+    optimum(seuil où la valeure est optimal)
+
+- <output> : On va avoir surtout l'utilité dans les formulaires. Résultat d'un calcul, résultat d'un programme..
+- <pre> : avoir le text tel qu'il est dans le document. ei ton code. Meme s'il ya des espace de 'indent lines'
+- <ruby> : ありがとう <rt> Arigato. Voir exemple et n'oublie pas de penser sémantique et non pas visuel. 
+- <samp> : résultat, voir l'exemple. 
+- <time> : on peut afficher année, mois, jour
+    les 3 à la fois 
+    Date + heure 
+    datetime="2018-01-25 11:07:01"
+
+
+
+-----------------  [Listes]
+-ils existent des listes, listes ordonnées...etc.
+- <ul></ul> la liste. (ul stands for unordered list) 
+- <li></li> un element de la liste. 
+
+- <ol> balise ordonnée. 
+    <ol reversed start = "12"> numerotation inverse
+    <ol start="10"> numerotation à partir de 10
+    <ol type="A">
+    <ol type="i"> numerotation chiffre roamains
+    <ol type="I">
+- Sous liste : mettre une liste à l'intérieure d'une autre liste. 
+
+
+-----------------  [Tableaux]
+<table>
+<caption>
+<thead>
+<tbody>
+<th> : colonne d'entete
+<tr>  : une ligne du tableau 
+<td> : une column
+<tfoot> comme th mais c'est en bas. 
+<td rowspan="2"> une case sur 2 lignes. *
+<th colspan ="2"> une case sur 2 colonne. "Donc faire attention de supprmer dans la deuxième ligne". 
+
+<colgroup>
+<col class>  un peux de CSS vers la suite. 
+<th abbr="prix"> pour abreger
+<th id="">
+
+-----------------  [FORMULAIRES]
+- <form methode="GET[POST]" action="" name="nom_formulaire" target="_blank">
+Beaucoup d'attributs dans cette balise form qui existent. 
+- <input> : balise pour un champs de saisie. 
+    att placeholder : ce qui sera écris dans le champs par défaut. 
+    att type : text, password, checkbox, color, datetimes,range, hidden, tel(telephone), reset
+              submit : pour valider le formulaire
+              pattern: pour RegEx
+    att value
+    Il faut toujours mettre l'attribut name pour pouvoir récupérer l'attribut, vers la suite en serveur. 
+
+- <label for=""> </label>
+ Utilise un label c'est beaucoup plus pratique pour les gens qui utilisent des caliers intelligents (pas de souris)
+ la valeur da l'attribut for dans <label>, doit etre le meme que l'id de <input>
+
+
+- <fieldset form="id_form">
+- <legend>
+- <select> att multiple
+- <option> <optgroup label="">
+- <input list> & <data list> : C'est la même chose que select. 
+- <button> att: formmethod, formaction, type
+
+
+------------------------------------- IMAGES 
+<img src="" alt=""> : essaye de toujours spécifier un attribut alt (pour les navigateur textuels)
+    Attributs: heihgt="auto"
+
+
+</figure> : continet <figcaption>
+            genre une légende. 
+            mettre n'importe quoi dans la description il faut etre créatif. 
+            genre mettre le lien de l'image avec la balise <a>
+
+
+<map> : attribut name: 
+        marche avec: <img usemap="#namemap"> Tq: <map name="#namemap">
+        continet la balise : elle prend le lien et la zone (shape) <area href="" shape="" coords="">
+        ->shape peut avoir: rectangle, carres, polygones avec plusieurs
+            -> rect: x1,x2, y1,y2
+            -> circle: x, y, r
+            -> poly: x1,y1,x2,y2,......xn,yn 
+
+        ->coords : par exemple les coordonnes que prend le shape(rectangle par ex)
+
+<picutre>   : media responsive ... etc (voir CSS)
+
+
+
+------------------------------------- SON ET VIDEO 
+format son: mp3 (compatible partout)
+            wav (compatible sauf IE)
+            ogg (compatible sauf IE et Safari)
+
+format video: mp4  (compatible partout)
+              webm (compatible sauf IE et Safari)
+              ogg  (compatible sauf IE et Safari)
+
+<audio> : att autoplay: pour que ca démarre le son automatiquement des que la page est 
+          chargée. 
+          controls: pour afficher les controles
+          contient 
+          si on veut separer l'attribut source <source> 
+          
+          att loop. comme son nom l'indique
+
+<video> : att controls, autoplay, width, height, poster(miniature "l'image par defaut") 
+          <source>
+
+
+------------------------------------- STRUCTURER PAGE WEB
+<div> : va gair comme un bloc au sein de la page. 
+<span> 
+<main> : dans le body, genre c'est pour gerer la partie principale
+<section> : sectionner une partie du document
+            une section est prévue pour être titrée
+
+<article> : Pour tout ce qui est article. 9:3
+<header> : cette balise est mal compris, ce n'est pas seulement l'entete de la page, mais par exemple un 
+          header d'artiicles. entete de body... entete de article...etc
+<footer> : meme chose comme <header>
+<nav> : balise pour la navgation, exemple un menu
+        en general elle possede une liste <ul>
+<aside> 
+
+-> Si on implémente des parties qui sont des articles footer asides etc. N'étulise pas le div. Utilise les balises
+appropriés à ça
+
+
+
+
+
+
+
+

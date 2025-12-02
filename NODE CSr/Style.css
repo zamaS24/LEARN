@@ -1,0 +1,19 @@
+h1 {
+    color: blue;
+}
+
+
+label{
+    display: block; 
+    margin-top: 1em;
+}
+
+label:first-of-type{
+    margin-top: 0;
+}
+
+input[type="text"]{
+    padding: .5em; 
+    border: solid 1px #999;
+    width: 15em;
+}

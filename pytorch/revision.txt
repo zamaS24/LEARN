@@ -1,0 +1,60 @@
+# tensor basics 
+
+- create a tensor 
+
+torch.Tensor(array, dtype=torch.float32)
+.data 
+.gradient ? (requires the autogradient )
+and all of the other numpy arrays 
+
+
+
+# auto_gradient : the building of the computation graph and setting to a tensor the requires_grad = True
+
+
+loss = f(theta1, ,theta2, ..., B)
+
+
+
+
+requires_grad = True ... etc 
+
+w.gradient
+w.grad.zero_()
+
+
+
+
+
+
+scalar_loss.backward()  // this will set up the dl/dw knowing that the dw is requires_grad you feel me bruh
+
+
+with torch.no_grad() so that it won't be added to the computation graph 
+with torch.auto_grad(<condition>):
+    # do something 
+    pass 
+
+
+
+pytorch loss and optimizers 
+    losses are in torch.nn 
+        nn.MSELoss()
+    optimizers : torch.utils.optim 
+        torch.utils.optim.SGD(parameters)
+
+
+
+layers : 
+    nn.Linear()
+
+
+
+tensor basics (everything is built on top of it, everything is just a tensor)
+
+
+
+
+- forward by batch, because deja the loss function is taking a batch at a time 
+
+

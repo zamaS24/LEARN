@@ -1,0 +1,365 @@
+body.over{
+    width: 500px; 
+    height: 500px;
+    margin:auto;
+    border: 3px solid rgb(101, 39, 10);
+    border-radius: 8px;
+}
+
+p.over {
+    margin: 10px;
+}
+p.modif-over{
+    /* font-style: italic;
+    font-variant: small-caps; 
+    font-weight: normal;
+    font-size: 1em;
+    font-family: cursive;  */
+    /* text-decoration: line-through ;  */
+
+    
+    text-align: line-through; 
+    text-decoration: none; 
+    text-transform: lowercase;
+    margin: 10px;
+    text-align: justify; /*il se fait tout le temps */
+    vertical-align: justify;
+    text-indent: 1.5em;
+    /* Il y a trop d'attributs  */
+    text-overflow: ellipsis;
+    /* letter-spacing: 3px; */
+    white-space: normal;
+    /* word-spacing: 15px; */
+
+    /* direction: rtl;  */
+}
+S
+h1.over{
+    /* text-shadow: 2px 2px 5px rgb(255, 0, 0); */
+    font-weight: bold;
+    font-family: sans-serif;
+    margin: 10px;
+    direction: rtl;
+    
+}
+
+img.over{
+    vertical-align: top middle;
+}
+
+/* ======================================== Couleurs et fond ==================================================*/
+bodya {
+    /* background-color: gray;
+    background-image: url(https://a-z-animals.com/media/killer-whale-1.jpg);
+    background-position: top center;    
+    background-repeat: no-repeat;
+    background-size: cover; */
+    margin: auto; 
+    width: 1000px;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    
+  
+}
+
+.modify-pa {
+    /* color: rgb(79, 18, 31); */
+    /* color: rgba(50, 0, 50, 1.0); */
+    /* color: hsl() */
+    background-image: url(https://a-z-animals.com/media/killer-whale-1.jpg);   
+    background-repeat: no-repeat; 
+    background-origin:border-box;
+    color: #641210;
+    border: 3px solid black;
+
+}
+
+diva, bodya {
+    border: 3px solid  red;
+}
+
+/* =============================================== STYLISER LISTE ========================= */
+body.over {
+    background-color:#eee;
+    margin:auto; 
+    width:1000px
+}
+
+div.over {
+    border: 3px solid red; 
+    display: flex;
+}
+
+li.over{
+    list-style-image: url(arrow.png);
+    border: 3px solid red; 
+    list-style-position: inside;
+    width:auto;
+    height: auto;
+}
+
+/* =============================================== MODELE DE BOITE ========================= */
+
+body, div, p{
+    margin: auto; 
+}
+
+html{
+    background-color: #c4c4c3 ;
+}
+
+body{
+    background-color: #574747;
+    width: 800px;
+    margin: auto; 
+}
+
+div{
+    background-color: #ab68a6;
+    width: 600px;
+    height: 400px;
+}
+
+p{
+    background-color: #b47676;
+    width: 300px;
+    height: 30%;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px; 
+    padding-right: 1px; 
+  
+}
+
+img {
+    width: 400px;
+    height: auto; 
+    border: 3px solid black;
+    margin: 10px;
+}
+
+caption, figcaption{
+    border: 3px solid black;
+    margin: 10px;
+}
+
+/* =========================== bordures et contours==================================== */
+
+
+
+.ib{display:inline-block}
+.il{display:list-item}
+
+html, body, div, p {
+    border-radius: 10px; 
+}
+figure, figcaption{
+    border: 3px solid black;
+    margin: 10px;
+}
+
+img{
+    width: 100;
+    height: auto;
+    border: 3px solid black;
+    margin: 10px;
+    padding: 10px;
+    display: inline; /* block */
+}
+
+html{
+    border: 3px solid yellow;
+    background-color: #c4c4c3 ;
+}
+
+body{
+    border: 3px solid red;
+    background-color: #574747;
+    width: 1080px;
+    outline: 3px dashed green; 
+
+}
+
+div{
+    border: 3px solid blue;
+    background-color: #ab68a6;
+    width: 600px;
+    height: 400px;
+    padding-left: 50px; 
+    margin-left: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+    outline: 3px dashed green; 
+}
+
+p{
+    border: 3px solid rgb(0, 0, 0); 
+    background-color: #b47676;
+    width: 300px;
+    height: 30%;
+    outline: 3px dashed green; 
+    overflow: auto; /* Hides any overflowing content */
+    text-overflow: ellipsis; /* Displays an ellipsis (...) to indicate text overflow */
+    /* méta propritete de padding */
+    padding: 20px 15px 30px 25px;
+    margin: 25px;   
+    margin-top: 10px;
+
+}
+
+form{
+    outline: 3px dashed green; 
+
+    border: 3px solid rgb(42, 244, 255); 
+    padding: 10px;
+    margin: 21px;
+    border: 3px solid rgb(0, 0, 0); 
+}
+
+form input{
+    outline: 3px dashed green; 
+    background-color: rgb(61, 146, 15);
+    border: 3px solid red; 
+}
+
+
+/* =========================== Affichage et positionement ============================= */
+
+img{
+    float:left
+}
+
+*{
+    margin: 0; 
+    outline: none; 
+    padding: 0;
+}
+
+body{
+    background-color: aliceblue;
+    margin:auto; 
+    width: 1000px;
+    /* border: 3px solid rgb(255, 0, 0); */
+}
+
+
+header{
+    background-color: rgb(255, 102, 0);
+    height: 80px;
+    margin:auto;
+    width:1000px;
+    
+}
+
+section{
+    background-color: rgb(17, 133, 62);
+    margin:auto;
+    width:800px; 
+    float: right;
+}
+
+aside{ 
+    background-color: rgb(137, 131, 245);
+    margin:auto;
+    width:200px;  
+    float: left; 
+
+}
+
+footer{
+    clear:both;
+    background-color: rgb(255, 0, 0);
+    margin:auto;
+    width:1000px;
+    height: 50px;
+    
+}
+
+article{
+    clear: both;
+    margin: auto;
+    float: right;
+}
+
+/* ================================== MODELE AVANCEE DE BOITE ======================= */
+
+body{
+    background-color: #EEE; 
+    margin: auto; 
+    width: 800px; 
+}
+
+#wrapper{
+    border: 3px solid darkblue;
+}
+
+#wrapper, .bloc1, .bloc2{
+    width: 100%; 
+}
+
+.bloc1, .bloc2{
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.bloc1{
+    /* border: 3px solid darkblue; */
+    background-color: rgb(224,185,185);
+}
+
+.bloc2{
+    /* border: 3px solid darkblue; */
+    background-color: rgb(156,169,212);
+    padding: 15px;
+}
+
+
+/* ========================================================== flex box ================================= */
+
+.container{
+    background-color: rgb(100,100,255);
+    height: 100px;
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* flex-flow: row-reverse wrap; */
+    align-items: flex-start;
+}
+
+.cont-item{
+    background-color: rgb(255,100,100);
+    border: 2px solid #000;
+    box-shadow: 0 0 1px black; 
+    flex: auto; 
+    float: left;
+}
+
+.obj1{flex-basis: 200px; }
+.obj2{flex-grow:1;}
+.obj3{flex-grow:1;}
+
+/* ================================================================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

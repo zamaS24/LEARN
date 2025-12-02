@@ -1,0 +1,161 @@
+/*
+    BASIC ROUTING
+    - app.METHOD(PATH, HANDLER)
+    - .get .post .put .delete
+    - app.method(path, (req,res) =>{})
+
+    ex: 
+    app.put('/user', (req, res) => {
+        res.send('Got a PUT request at /user')
+    })
+
+    app.delete('/user', (req, res) => {
+        res.send('Got a DELETE request at /user')
+    })
+
+    [STATIC FILES]
+
+    const path = require('path')
+    app.use( express.static(path.join(__dirname, 'public'))) //make it in folder public
+
+    [ROUTING]
+    const express = require('express')
+    const app = express()
+    -route methods
+    -route paths
+    - app.all(), used to load middleware functions at a path for all HTTP request methods
+    - app.all('/secret', (req, res, next) => {
+            console.log('Accessing the secret section ...')
+            next() // pass control to the next handler
+        })
+    -route paths + request method
+
+    -send html :
+    app.get('/', (req,res) => {
+        res.sendFile(path.join(__dirname, 'public', 'index.html')); 
+    });
+
+
+    [ROUTE PARAMETERS]
+    Route path: /users/:userId/books/:bookId
+    Request URL: http://localhost:3000/users/34/books/8989
+    req.params: { "userId": "34", "bookId": "8989" }
+
+    Route path: /flights/:from-:to
+    Request URL: http://localhost:3000/flights/LAX-SFO
+    req.params: { "from": "LAX", "to": "SFO" }
+
+    define routes with routes parameteers 
+    app.get('/users/:userId/books/:bookId', (req, res) => {
+        res.send(req.params)
+    })
+
+    [behave like middlwares with callback functions]
+    More than one callback function can handle
+     a route (make sure you specify the next object). For example:
+        app.get('/example/b', (req, res, next) => {
+            console.log('the response will be sent by the next function ...')
+            next()
+        }, (req, res) => {
+            res.send('Hello from B!')
+        })
+
+
+    response methods: 
+    res.end() : end the response processs
+    res.json() : send a JSON response
+    res.redirect() : redirect a response 
+    res.render(): render a view template 
+    res.send(): send a response of various type 
+    res.sendFile() Send a file as an octet stream
+    res.sendStatus() Set the response status code and send its string representation as the response body.
+    res.status(); 
+
+    [middlware]
+    app.use(function)
+    function(req,res,next);  //when you do this for every route it will call the function
+
+    [put all of the similar routes in a single file]
+    - create folder named routes 
+    - inside routes create a folder named API so we put the routes of api in api
+    - because sometimes we want to server templates not just json
+    - create members.js in api
+
+    -we need to bring the router 
+    -const express = require('express'); 
+    -const router = express.Router(); 
+
+    -when we use the router, when we handle the request we use
+    router.get 
+    - be carefull on the things that you need to require (exemple array of members)
+    - and finally you make module.exports = router; 
+    - when you do : app.use('/users', userRoutes); //this means that in the router.method(path)
+     it will use /users in tha path. so make sure that in router you don't include the 
+     /users. 
+
+    -now we go to index.js
+    and do : 
+    app.use('/api/members', require('./routes/api/members')); 
+
+    now we don't need to specify /api/members in route in members.js
+
+    -[CREATE A MEMBER]
+     -the URL in google chrome makes only get requests to the path
+     -we make a post request 
+     -router.post( ,(req,res) =>{}) 
+     -req.body
+
+    go to postman : select post
+    -in header key = content type value = application/json (becuz it's the type of data we're sending)
+    - in body choose raw and put some jason 
+    {
+        "name": "hamza", 
+        "email": "omairhamza2000@gmail.com"
+    }
+    - now send, you will get a 200 response
+    - and we got nothing back, becuz we need to use a body parser so that we can parse the data 
+    we are sending in the body. 
+    - we will use a body parser middleware
+    app.use(express.json())
+    -we also want to handle form submissions so we use: 
+    app.use(express.urlencoded({extended:false}))  //so we can handle url encoded data
+
+    -the data are in the req.body.<param_name>
+    -now wen we send with post, it gives us the data we send
+
+
+    [UPDATE A MEMBER]
+    -when you deal with real api it's with a database
+    -req.params
+    -put request completely override 
+    - patch : just change something little. exemple change only age. 
+
+    [DELETE MEMBER]
+    -delete request (see code)
+    
+
+    -and now we have basically made a CRUD api
+
+    -make sure to organise your code by adding 
+     The controller folder, where you actually put your actions that you will use
+     in your routes. Example: route.get('/', getUsers); 
+     and in the controllers/user.js you make the function getUsers = (req,res){}
+     and also do the import and exports
+     In the controllers file you make this: 
+        -in users.js "controllers folder" for example: 
+            export const createUser = (req, res) => {//code here}
+        -in users.js "routes folder" import {createUser} from  '../Controllers/users'; 
+
+    - in the routes we only want to have the routes. 
+    - Make all the logic in the controllers 
+
+    [EXPRESS HANDLEBAR]
+
+*/
+
+
+
+module.exports const ajoutMembre(req,res) => {
+    //here goes the thing right ? 
+    
+}

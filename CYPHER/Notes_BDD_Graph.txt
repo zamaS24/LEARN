@@ -1,0 +1,476 @@
+
+============================ INTRO TO GRAPH DATABASES SERIES========================================
+====================================================================================================
+
+
+==================================================== WHAT IS A GRAPH DATABASE==========================
+
+-Neo4j is a database not a visualisation. 
+- transactional database (noSQL category). Different than normalised relational databases. 
+
+- relational stores in a shoape of tables and joins. Neo stores the data in a shape of a graph. A real graph, graph theory graph. 
+
+-You have nodes and they have properties, and then you have relationship between those nodes
+
+-In neo4j relationships are first class citizens, they are just as important as the nodes thmeselves, like how are things connected, just as how you could have different type of nodes, you can have different types of relationships, you can put properties in those relationships, values, weighted, special info, date and time. 
+- understand how the data is connected.
+
+few things important about neo4j and what makes the difference : 
+it's a native graph database : means the underline architecture of how the data is actually stored is not build in top of tables
+
+when you make a query in relational databases, you're indexing and other joins, and it's really  expensive. 
+
+
+in neo4j you index to find your initial starting point, and then you're just chasing memory pointers, which a computer pretty good (fast) at it. 
+
+the query language : 
+-sql not built for highly connected data. 
+-neo4j developped a laguage, an open language which is cypher, it's basically sql for graphs.  cypher it's based more on pattern and matches, more networky kind of related queries which is very powerful. 
+
+example: 
+MATCH p=(company:company)-[DEVELOPS]->(game:Game)<-[PUBLISHES]-(comapany2:Company)
+WHERE company.uid='company-electronic_arts'
+RETURN p. 
+
+MATCH p=(game:Game)-[]-(characteristic:ConceptEntry)
+where game.uid = 'game-borderlnads_2' OR game.uid = 'game-fallout_3'
+=====================================================================================================================
+
+
+
+========================================INDENTIFYING GRAPH SHAPED PROBLEMS===========================================
+
+WHAT IS A GRAPH ? 
+(voir of thg)
+
+Anything can be a graph. 
+-the Internet can be a graph. 
+-molecules 
+
+-a graph provides a better appromixaton of reality :
+person drinks coffee. 
+
+what might be and not be a graph shape problem :  
+
+we don't only seek for discrete entities, but we ask complex questions of complex patterns. to get an answer. 
+the example of : why some products are sold more than other products. 
+
+what happens if something happens. 
+
+
+
+          #SCENARIOS FOR IDENTIFYING GRAPH SHAPED PROBLEMS# 
+1- does our problem involve understanding relationships between entities. => when we are looking for : 
+recommondatoins, next best action, fraud detection, identify resolution, data lineage
+
+2- does the problem involve a lot of self same type of entity? 
+=>	organisational hierarchies
+	social influence
+	friends of friends (connection between a lot of people) (bob friend with ela) and (ela friend with mike) probably mike knows ela)
+	churn detection
+
+-3 does the problem explore relationships of varying or unknown depth?  = >
+							supply chain visibility, 	
+							bill of materials, 
+							network management
+
+-4 does our problem involve discovering lots of diferrent routes or paths? => logistic and routing,
+									      infrastructure management, 
+									      dependency tracing. 
+
+
+To summarise: we analyse the use of the data in the workflow and if it's used in relation of other data - we use graphs
+
+
+
+
+
+========================= INTRO TO GRAPH DATABASES EP1 THE EVOLUTION OF DBs==================================
+
+- data stores in holes (lol)
+- relational databases, normalisation, indexes, some queries with 20 tables, very expensive. 
+- key/value
+- no sql databases; 
+- graph databses : store data in more logical fashion, a way that represents the real world. Data integrity : so we borought ACID back to at least one nosql database : Neo4j. allows us to use neo4j as a transactionnal data store. 
+Storing your most critial business data. 
+!!!! later we will sho how to move relational database data, into a real realtional database, a graph databse. !!!! 
+some think that graph data bases are used for only social network. well THey're not. They are usen in dozen of use cases. from fraud detection to real time recommondation to network and it operation and more. 
+
+================================================ EP 2 Properties og GDBs and use cases ======================
+What makes GDBs special and different from other no sql databases and relational databases? 
+The use cases ? 
+ 3 goals to evaluate databases : 
+	- intuitiveness 
+	- speed 
+	- Agility 
+
+- Use cases: 
+A lot of use cases: 
+
+
+=============================================== EP 3 Property graph model ======================================
+- A graph looks like a real world
+- THe white board model, is the exact physical model in disc. 
+- Detailed property graph: 
+	-add relationship because neo4j is schema optional, 
+	-Property relationship. 
+	- you can have a property that exist only on a single node. and that's fine. 
+	- add aditional relationship and add aditional node, we just easily add them.
+	- relationships can have their own properties too. 
+	- we can have label on each node, to say what type it is, example :Person :Car 
+
+	- Very brief example of cypher, 
+	cyppher creating or quering 	
+ example : 
+anna loves dane
+create (:Person {name:"Ann"})-[:Loves]->(:Person{name:"Dan"})
+
+when we match it's regardless of the direction : 
+match (:Person{name:"Ann"})-[:FB_FRIENDS]->(:Person{name:})
+	// Matches just the ann dann friendship as long as ann initiated it. 
+
+match (:Person{name:"Ann"})-[:Loves]-(:Person{name:"Dan"})
+	// Matches all of ann's friends, regardless of who initiated the friendship
+
+
+
+
+
+
+
+========================================================EP4 RDBMS + SQL TO GRAPHS + CYPHER=========================
+
+3 steps to using neo4j 
+1- creaate your model : 
+	your labels 
+	your nodes 
+	your properties, even tho it's schema optional. Means you can add or remove these things on the fly later
+
+2 - Load data:  using world most common file format : a csv file and it's super easy to do and very quick. because it's easy to export the data in your relational Db to csv file and then the command line tools of neo4j allow you to load the data to millions of nodes and relationship. 
+
+3  - quering your data: quering in effecient way and intuitive way. 
+neo4j comes in with a built in web application, that allows you to query the data and see the results. Either in a graph form or tabular form. Save your favorite queries ...etc. 
+
+neo4j isn't an analytical database, it is inteded to be your ACID compliant transactional database to store your most critical data. 
+
+It's all about how to migrate and how your app use the graph DB or the relational DB and other things. Etc...
+
+
+SQL pains: 
+	- complex to model and store relationships. 
+	- Performance degrades with increases in data
+	- Queries get long and complex
+	- Maintenance is painful 
+
+How to convert your data : 
+	- ER diagrams
+	- Locate the foreign keys then eliminate the foreign keys 
+	- replace them with relatoinships
+	- locate the join tables	
+		- simple join tables becomes relationships
+		- join table with attribute become relationship with properties. 
+and then you can convert it to a graph. 
+
+Graph gains: 
+	-Easy to model and store relationships
+	-Performance relationships traversal remains constant with grow of data size. 
+	- queries are shortened and more readable
+	- adding aditional properties and relationships can be done fly - no migrations
+
+=====================================================================================================================
+ 
+	
+======================================== EP 5 and 6 INtro to cypher, the graph query language ==============================
+
+WHy did we create cypher : 
+
+Cypher is based on patterns, creating patterns by nodes and relationships, and then querying this paterns. 
+
+example: 
+who drives a car that is owned by a lover?  
+
+match 
+	(p1:Person)-[:Drives]->(c:Car)-[:OwnedBy]->(p2:Person)-<[:Loves]-(p1)
+return 
+	p1
+
+Patterns in cypher use AschiArt
+   AsciiArt for nodes 
+	Nodes are surrounded by parenthesis () or (p) 
+Labels or tags start with : and group nodes by roles or types 
+	(p:Person:Mamma)
+Nodes can have properties 
+	(p:Person {name:'Veronica'})
+
+Relationships are wrapped with hypens or square brackets
+ --> or [h:Hired]->
+
+direction of relationship is specified with <>
+	(p1:Person)-[h:Hired]->(p2) or  (p1:Person)<-[h:Hired]-(p2)
+
+relatoinships have properties too 
+	-[:HIRED {type :'fulltime'})->
+
+basic create and query statement :
+basic example , later we will see more complex.
+
+	for create : 
+	create 
+		(:Person {name:"Ann"})-[:LOVES]->(:Person{name:"dan"})
+
+	example for quering : 
+		who does ann love? 
+	match (:Person {name:"Ann"})-[:LOVES]->(p:Person)
+	return p
+
+	car thar is driven by ann with where 
+	match
+		(p:Person)-[:DRIVES]->(c:Car)
+	where
+		p.name = 'Ann'
+	return 
+		c
+
+	ajouter une descripstion au vehicule : (set statement allows us to set additional properties on the node that we found)
+	match
+		(p:Person)-[:DRIVES]->(c:Car)
+	where
+		p.name = 'Ann'
+	set 
+		c.brand = 'volvo'
+		c.model ='v70'
+	retun 
+		c
+
+	Ensuring uniqueness: 
+	the important aspect of dealing with graphs is dealing with the integrity of the graph ei the integrity of the data 
+	and neo4j is really focusing on being a transactional database, OLTP, has ACID, compiance. 
+
+	
+	for exemple if we want to not have a bunch of different anns in the graph 
+	we an ensuer that by the constraint 
+
+	create constraint on (p:Person)
+	assert p.name is unique 
+	
+	
+	in the previous example : if we want to add to ann a relation that she has  a pet named sam
+	if we try to do this 
+	create (a:Person {name:'Ann'})
+	create (a)-[:HAS_PET]->(:Dog {name:"Sam"})
+	
+	we can't do this, we will get an error due to the uniqueness we difined before. 
+	so we use the MERGE 
+		MERGE (a:Person {name: 'Ann'})
+		create (a)-[:HAS_PET]->(p:pet {name :'sam'})
+	it looks in the graph for the person named ann if it does not exist it will create it 
+
+	on peux faire
+	MERGE (a:Person {name: 'Ann'})
+	ON CREATE SET 
+			a.twitter ='@ann'
+	MERGE (a)-[:HAS_PET]->(:Dog {name :'sam'})
+	
+	ei si il trouve pas le noeud au debut alors il le cree, et quand il le cree(on create set) il ajoute la proprite a.twitter = '@an'
+	et puis il ajouter la relation et le noeud si et seulement si ca n'existe pas deja. Car on poeux pas avoir une information dupliqué. 
+
+	
+	on peut retourner une chaine dans le graph example 
+	
+	MATCH 
+		path = (:Person)-[:ACTED_IN]->(:Movie )
+	RETURN 
+		path 
+	//path est une variable. 
+
+	ON peut avoir les resultat d'une requete both in tabular or graph (see pic)
+	in the graph we return the nodes, in the tabular we return properties. 
+
+	case sensitivity : 
+		case sensitivity : node labels , relatoinship types, property keys. ex: Person :ACTED_IN name
+		case insensitive : Cypher keywords. ex : MaTch return 
+
+
+	Aggregates in cypher : 
+	in cypher we don't need a group by statement 
+	we implicitly group by any non-aggregate fields in the RETURN statement
+	example : 
+		match (p:Person) -[:ACTED_IN]->(m:Movie)
+	 	return p.name, count(*) AS numberOfMovies	
+		we are going an aggregate counting. Pour chaque person on compte le nombre de films ou il a joué
+
+	. There is a lot of aggregate function  like : 
+		count(variable)
+		count(distinc variable)
+		collect(n.property)
+		sum(n.property)
+		percentileDisc(n.property, $percentile)
+		...etc
+	
+	Neo4j is extensible; you can even write your own user-defined aggregate function
+	and you can find some useful aggregate function made in the neo4j community 
+
+
+
+	the where clause: for filtring results 
+	comme dans le sql. 
+	comparison operators <,>,<=, >=, IS NULL ,IS NOT NULL
+	=~  exemple p.name ="k.+"    the name starts with k and then is followed by 0 or one characters. 
+	or and 
+
+
+==================================================================================== Intro to graph and neo4j Neo4j developer relations at Neo4j=========================================
+
+- INstallation community server
+- gist.neo4j.org wher you can find data sets and play around with neo4j 
+
+-God damn it, it took me very looong to do the installation of neo4j borwser. It's due to java and powershell etc. But the main thing was that it requires java se11. 
+- You also have this website : https://neo4j.com/graphgists/
+- cmd c:/neo4j/bin 
+- >neo4j console
+- >neo4j help to show all the commands. 
+
+-> I Guess I'm leaving it and I will just try it in another crash course lmao. 
+===========================================================================================================================================================================================
+
+============================================================================Neo4j (Graph Database) Crash Course===========================================================================
+
+-INTRODUCTION 
+-DOWNLOAD AND SET UP, LOOKING AT THE NEO4J INTERFACE.
+-DATA SET AND STUFF
+
+
+QUERING FOR DATA: 
+
+terminal> match(player:PLAYER{name:'LeBron James'}) return player
+terminal> match(player:PLAYER)
+	  where player.name='LeBron James'}) 
+	  return player
+
+terminal> terminal> match(player:PLAYER)
+	  where player.name='LeBron James'}) 
+	  return player
+
+operators and statement 
+
+where not statement : 
+terminal> match(player:PLAYER) where not (player.height > 2.11 and player.weight >= 110) return player
+	
+
+-SKIP and LIMIT
+- order by
+
+QUERING FOR RELASHIONSHIPS : 
+-MATCH (player:PLAYER),(coach:COACH) RETURN player, coach  : for multiple nodes filtring. 
+- match(n)-[:TEAMMATES]->(m) return n,m
+
+-Match(lebron: PLAYER)-[:TEAMMATES]->(tm:PLAYER)
+- MATCH (tm)-[contract:PLAYSFOR]->(:team) where contract.salary >= 40000000
+- RETURN tm
+	//You see that we can make more than one match in a query. 
+
+- we can use this to find certain patterns : 
+MATCH p=()-[r:PLAYS_FOR]->() RETURN p LIMIT 25 // Like when we are interested in relashionships only between nodes. 
+-Aggregation : count() average() ...;etc. max(), min(), sum(), 
+
+now : 
+deleting nodes 
+	- we can not delete node when it has relationships exist, for example : 
+	>match(ja{name:'Ja Morant'}) delete ja
+	-so we have to do this : 
+	match(ja{name:'Ja Morant'}) detach delete ja
+deleting relationships: 
+
+creating nodes: 
+	- A node can have multiple labels ex : :PLEYR:COACH:MANAGER_PARTNER
+	- Ex : match(ja{name:'Ja Morant'}) detach delete ja
+
+creating relationships : 
+	- match(p:PLAYER {name:'LeBron James'}), (t:TEAM {name:'LA Lakers'})
+	- create (p)-[:PLAYS_FOR {salary :'40000000'}]->(t)
+
+Updating nodes and relationships : 
+	- when you search by node, you can't just search it like ({id = 0}), you have to actually use this below this line
+	- 	match(anthony:PLAYER)
+		where ID(anthony) = 0 
+		set anthony.name =""
+		return anthony 	
+	
+	- We can update an attribute and add another attribute at the same time. 
+	match(lebron:PLAYER) where ID(lebron) = 4 set lebron.height = 2.02, lebron.age = 36 
+	return lebron
+	
+	-We can also update a Label with 
+		>set lebron:REF
+	
+	-we can update relationships 
+		>match(lebron {name: "LeBron James"})-[contract:PLAYS_FOR]->(team:TEAM)
+		set contract.salary = 60000000
+		return lebron, team
+
+	-we can remove an attribute or a laber 
+		>match (lebron:PLAYER {name:'LeBron James'}) 
+		remove lebron:NEWLABEL
+		return lebron
+
+
+===========================================================================================Extra=============================================================================================
+Neo4j is often described as schema optional, meaning that it is not necessary to create indexes and constraints. You can create data — nodes, relationships and properties — without defining a schema up front.
+
+we can return nodes and we can return other stuff lol. 
+
+A node can have multiple labels. 	
+
+
+FOr IDs use ID fucntion. 
+
+For constraints: 
+CREATE CONSTRAINT [constraint_name] [IF NOT EXISTS]
+FOR (n:LabelName)
+REQUIRE n.propertyName IS UNIQU
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

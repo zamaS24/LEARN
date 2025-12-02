@@ -1,0 +1,540 @@
+===========================================================================================
+================================== EXTRA ============================================== 
+
+- in dpg.childwindow we can specify the width and height
+if not specified they will grow automatically with the window
+if we want to grow automatically only in width or height then we assign the value =-1
+-1 means will alwyas leave only 1 pixel on the end of the width, we can also make -100 to leave 100pixels
+
+- with dpg.collapsing_header() : #pour faire le header comme dans demo
+
+- Items, everything is an item : 
+    - UI items:  Any item in DPG that has a visual component (i.e. button, listbox, window, etc).
+    - Containers: Items that can hold other items. (i.e. window, groups, registries, etc).
+
+
+Primary window: 
+    you can set primary window with : 
+    dpg.set_primary_window("Primary Window", True), first part is tag
+
+
+ICONS 
+
+
+- window close callback: 
+just add the attribute : on_close=callback
+
+- when adding items with the with callback instead of add:
+just add the parent tag. especially when there is nested with elements
+
+
+- How to get width and height of item in dpg?
+width, height = dpg.get_item_rect_size(drawlist)
+===========================================================================================
+============================ IO, HANDLERS, State poling ====================================
+
+CHAT GPT : Exactly! You've grasped the essence of item handlers in Dear PyGui. Handlers are a powerful mechanism that allows you to extend the behavior of specific widgets without modifying the core code of the widget itself. By registering custom item handlers, you can define additional functionalities or actions that should be performed when certain events occur, such as mouse clicks, drags, hovers, or any other events that are relevant to the widget.
+
+The primary benefit of using item handlers is that they promote modularity and maintainability of your code. Instead of directly modifying the widget's implementation, which can be complicated and may lead to compatibility issues with future updates, you can use handlers to customize the behavior while keeping the original widget code intact.
+
+Item handlers are versatile and allow you to introduce complex interactions or custom logic specific to your application without introducing unnecessary complexity to the library itself. They make it easier to tailor the GUI framework to suit your specific needs while adhering to the principles of encapsulation and separation of concerns in software development.
+
+Whether you want to trigger a custom function when a button is clicked, modify the appearance of a widget when the mouse hovers over it, or add validation logic when the user enters text in an input field, item handlers provide an elegant and non-intrusive way to achieve these customizations.
+
+
+n Dear PyGui, item handlers can be activated or deactivated using the active parameter when registering the handler. By default, when you register an item handler, it is active, meaning it will respond to the associated events as expected. However, you have the flexibility to control when the handler should be active and when it should be inactive.
+dpg.add_item_handler(item_type, handler, active=True)
+
+Item handlers listen for states realted to a specific Item
+Events:
+    -Activated
+    -Active
+    -Clicked
+    -Deactivated
+    -Deactivated After Edited
+    -Focus
+    -Hover
+    -Resize
+    -Toggled
+    -Visible
+
+Item handlers are required to be added to a item handler registry
+Item handler registries can be bound to an item. They can be bound to multiple items to prevent having to duplicate handlers for every item.
+
+        #1. create handler_registry(tag=<tag>) and add the events you wish
+        with dpg.item_handler_registry(tag="widget handler") as handler:
+            dpg.add_item_clicked_handler(callback=change_text) #setting callback for event
+            dpg.add_item_visible_handler(callback=visible_call)
+
+        #2. bind it to an item so it will behave when event is triggered
+        #3. bind item handler registry to item
+        dpg.bind_item_handler_registry("text item", "widget handler")
+        dpg.bind_item_handler_registry("text item 2", "widget handler")
+
+
+GLOBAL HANDLERS:
+Global handlers listen for actions not tied to a specific item:
+Keys:
+    Down
+    Press
+    Release
+
+Mouse:
+    Click
+    Double Click
+    Down
+    Drag
+    Move
+    Release
+    Wheel
+
+        def change_text(sender, app_data):
+            dpg.set_value("text_item", f"Mouse Button: {app_data[0]}, Down Time: {app_data[1]} seconds")
+        with dpg.handler_registry():
+            dpg.add_mouse_down_handler(callback=change_text)    
+
+
+POLLING ITEM STATES: 
+it's like checking about an item state using `get_item_state`
+it is powerful when combined with handlers (item handlers, or global handlers)
+
+        def change_text(sender, app_data):
+            if dpg.is_item_hovered("text item"):
+                dpg.set_value("text item", f"Stop Hovering Me, Go away!!")
+            else:
+                dpg.set_value("text item", f"Hover Me!")
+
+        with dpg.handler_registry():
+            dpg.add_mouse_move_handler(callback=change_text)
+
+get_item_state(<item_id>) return a dictionnary of all possibles states like hover ...etc
+
+
+===========================================================================================
+===================================== ITEM USAGE ==========================================
+items can be created and deleted
+to add an item: 
+    b0 = dpg.add_button(label="button 0")
+______ITEM HANDLERS 
+
+with dpg.item_handler_registry(tag="widget handler") as handler:
+    dpg.add_item_clicked_handler(callback=change_text)
+    dpg.add_item_visible_handler(callback=visible_call)
+
+    we have global HANDLERS
+    we have poling state HANDLERS (getting the item state)
+______CONTAINERS 
+-are better to be created as context_manager exemple: with openfile as: 
+
+______UI ITEMS 
+-are items that are considered to be a visual and usually interactable element in your user interface.
+# If you want to add an item to an existing container, you
+# can specify it by passing the container's tag as the
+# "parent" parameter.
+button2 = dpg.add_button(label="Don't forget me!", parent=window)
+
+_______RUNTIME ADDING AND DELETING 
+By using the before keyword when adding a item you can control which item in the parent the new item will come before. Default will place the new widget at the end
+global new_button1, new_button2
+    new_button1 = dpg.add_button(label="New Button", before="delete_button", tag="new_button1")
+    new_button2 = dpg.add_button(label="New Button 2", parent="secondary_window", tag="new_button2")
+    dpg.delete_item("new_button1")
+    dpg.delete_item("new_button2") , their tag
+
+deleting container
+When deleting a container the container and its’ children are deleted by default, unless the keyword children_only is set to True, i.e.:
+dpg.delete_item("window", children_only=True)
+
+
+
+________TAG SYSTEM
+When a item is created, a tag is generated for you automatically. It is your responsibility to store this tag if you intend on interacting with the widget at a later time.
+
+Aliases : is when I set the tag myself with a string
+It is the user’s responsibility to make sure aliases are unique
+dpg.get_value("unique_tag")
+dpg.set_value("unique_tag")
+
+======================================== ITEM CONFIGURATION =====================================
+dpg.configure_item("item", enabled=False, label="New Label")
+
+_______ ITEM CALLBACKS
+Callbacks can either be assigned to the item upon creation or after creation using set_item_callback()
+sender:
+    argument is used by DPG to inform the callback which item triggered the callback by sending the tag or 0 if trigger by the application.
+
+app_data:
+    argument is used DPG to send information to the callback i.e. the current value of most basic widgets.
+
+user_data: 
+    I can also send some data if I want to that will be captured in the callback function 
+    def button_callback(sender, app_data, user_data)
+        dpg.add_button(label="Print to Terminal", callback=button_callback, user_data="Some Data")
+
+_______ DEBUGGING CALLBACKS
+
+while dpg.is_dearpygui_running():
+    jobs = dpg.get_callback_queue() # retrieves and clears queue
+    dpg.run_callbacks(jobs)
+    dpg.render_dearpygui_frame()
+
+_______ VALUES 
+get_value(id) and set_value(id) 
+When an item is created, it creates an associated value by default. Values can be shared between items with the same underlying value type. This is accomplished by using the source keyword. One of the benefits of this is to have multiple items control the same value.
+
+several value items: 
+    - mvBoolValue
+    - mvColorValue
+    - mvDoubleValue
+    - mvDouble4Value
+    - mvFloatValue
+    - mvFloat4Value
+    - mvFloatVectValue
+    - mvIntValue
+    - mvInt4Value
+    - mvSeriesValue
+    - mvStringValue
+
+We can create a registry value and make it source of something like this: 
+
+with dpg.value_registry():
+    dpg.add_bool_value(default_value=True, tag="bool_value")
+    dpg.add_string_value(default_value="Default string", tag="string_value")
+
+with dpg.window(label="Tutorial"):
+    dpg.add_checkbox(label="Radio Button1", source="bool_value")
+    dpg.add_checkbox(label="Radio Button2", source="bool_value")
+
+    dpg.add_input_text(label="Text Input 1", source="string_value")
+    dpg.add_input_text(label="Text Input 2", source="string_value", password=True)
+
+meaning that whenever we are setting new value to the input text we are actually modifying the registry value so any item that is set source to this element of registry value will be updated
+
+this is great when we create UI items that all depends on some value
+
+
+
+_______ CONTEXT MANAGERS
+They have added context managers as helpers for most container items.
+example: 
+core Command        |       context managers
+add_table           |       with table():
+add_table_row       |       with table_row():
+.                           with group(…):
+.                           with font_registry(…):
+.                           with handler_registry(…):
+.                           with plot():
+.                           with texture_registry(…):
+see more in: https://dearpygui.readthedocs.io/en/latest/documentation/container-context-manager.html
+
+benefits are : Automatically push containers to container stack.
+.              Automatically pop containers off container stack
+.              More structured, readable code.
+
+
+
+CONTAINER STACK (hiérarchie de containers)
+- explicit parental assignment using the parent=<parent-id> parameter
+            dpg.add_window(label="Tutorial", tag="window")
+            dpg.add_menu_bar(parent="window", tag="menu_bar")
+            dpg.add_menu(label="Themes", parent="menu_bar", tag="themes")
+            dpg.add_menu_item(label="Dark", parent="themes")
+            dpg.add_menu_item(label="Light", parent="themes")
+            #But it's better to use context managers (with    as:)
+    -> <parent-id> can be a uuid when we don't pass tha tag argument
+    -> otherwise <parent-id> is an aliases
+
+CONTAINER STACk operations
+            dpg.push_container_stack(<container>)
+            dpg.pop_container_stack()
+
+__________ CONTAINER SLOTS AND CHILDREN 
+        Slots
+Items are stored in target slots within their parent container. Below is the breakdown of slots:
+
+            Slot 0:
+            mvFileExtension, mvFontRangeHint, mvNodeLink, mvAnnotation, mvDragLine, mvDragPoint, mvLegend, mvTableColumn
+
+            Slot 1:
+            Most items
+
+            Slot 2:
+            Draw items
+
+            Slot 3:
+            mvDragPayload
+
+we can use: 
+dpg.delete_item(mw,children_only=True, slot=2) will delete all child items that belongs to slot 2
+in general each time appartient to one of these slot types
+
+we have these fucntions: 
+            is_item_container
+            checks if an item is a container type
+
+            get_item_slot
+            returns the item’s slot
+
+            get_item_parent
+            returns the item’s parent UUID
+
+            get_item_children
+            returns an item’s children
+
+            reorder_items
+            reorders children in a single call
+
+            move_item_up
+            moves an item up within its slot
+
+            move_item_down
+            moves an item down within its slot
+
+            move_item
+            moves an item between containers
+
+            set_item_children
+            unstaging a stage into an item’s children slot
+
+
+
+============================================== Drawing API =============================================
+
+            with dpg.drawlist(width, height)  as:  or dpg.add_drawlist(width, height)
+            is the area or the container of the drawings, we must always call it
+
+            we have : 
+                dpg.draw_line()
+                dpg.draw_text()
+                dpg.draw_arrow()
+
+___LAYERS
+- with  dpg.drawLayer(tag="someTag") we can use this tag to delete everything that belongs
+to this layer. 
+
+example we have two layers and we want to delete all the drawings of layer 2
+dpg.configure_item("layer2", show=False)
+un layer comme si c'est un groupe de drawings
+
+
+__ IMAGES 
+Draw list can display images of PNG, JPEG, or BMP
+
+Using the keywords pmin and pmax we can define the upper left and lower 
+right area of the rectangle that the image will be drawn onto the canvas. 
+The image will scale to fit the specified area.
+
+With keywords uv_min and uv_max we can specify normalized texture coordinates to use just
+a portion of the area on the image. The default of uv_min = [0,0] and uv_max = [1,1] 
+will display the entire image while uv_min = [0,0] uv_max = [0.5,0.5]
+will only show the first quarter of the drawing.
+uv_min et uv_max genre combien de fois l'image se repete tu vois
+
+You need to use the : 
+width, height, channels, data = dpg.load_image('SpriteMapExample.png') # 0: width, 1: height, 2: channels, 3: data
+
+with dpg.texture_registry():
+    dpg.add_static_texture(width, height, data, tag="image_id")
+
+And then in the drawlist() just use the function example: 
+dpg.draw_image("image_id", (0, 400), (200, 600), uv_min=(0, 0), uv_max=(1, 1))
+        dpg.draw_image("image_id", (400, 300), (600, 500), uv_min=(0, 0), uv_max=(0.5, 0.5))
+        dpg.draw_image("image_id", (0, 0), (300, 300), uv_min=(0, 0), uv_max=(2.5, 2.5))
+
+
+=============================================== file and directory selector =======================================
+to add file dialog: 
+                    dpg.add_file_dialog(
+                        directory_selector=True, show=False, callback=callback, tag="file_dialog_id",
+                        cancel_callback=cancel_callback, width=700 ,height=400)
+                    
+                    -> directory_selector, callback, cacel_callback, width, height, tag, show
+                    -> for files you should add file extension like this: 
+                        dpg.add_file_extension(".py", parent="file_dialog")
+                        or just use it with context managers so you don't specify the parent
+
+                    in the callback: App_data is a dictionnary that has :
+                        file_path_name: 
+                        file_name:
+                        current_path
+                        current_fileter: 
+                        min_size:
+                        max_size: 
+            l'utilisateur doit impérativement choisir l'extension du fichier.
+            car file_path_name retourne l'extension selectionnée. 
+
+- You canuse multiple selections, just check the documentation
+
+================================================ FILTER SET =====================================================
+most items have their filter-key keyword, we can set it in creation. 
+
+example: filtering items based on their filter-key
+TO use it we need to use the     with dpg.filter_set(id="filter_id"): 
+and then create our elements inside of it with their filter key
+if we set a value to this filter_set, it will only show the items with filter_key = value
+
+for example a button submitting a callback with : dpg.set_value("filter_id", filter_key)
+
+================================================== FONTS & (ITEM FONTS)========================================================
+
+we can set a font to the whole app or for a certain item.
+to add a font we need first to add it to the font registry by: 
+    with dpg.font_registry()
+        font_id = dpg.add_font("fontname.otf", 20 /* size */)
+        second_font = dpg.add_font("NotoSerifCJKjp-Medium.otf", 10)
+
+for the default:    
+    dpg.bind_font(default_font)
+
+for a certain item: 
+    dpg.bind_item_font(item, font)
+
+================================================ INIT FILES =================================================
+
+to restore the positions of the windows
+just check the documentation
+
+================================================ MENU BAR ===================================================
+- there is the viewport menu (which is a menu that is in a viewport only)
+- there's also menus in the windows
+
+
+
+================================================ NODE EDITOR ===================================================
+-we have  node editor : the area of which we make nodes
+-we have node
+-we have node attribute: which are the widgets we add to the node
+
+
+-when we create the node_editor container we pass link_callback and delink_callback
+a callback when a link happens and a callback when a delink happens
+
+
+- You can delink using ctr+rightClick
+- you can delete an item (use a global handler)
+- you can select multiple items using ctrl
+
+- create a node editor (the space )
+with dpg.node_editor(
+        tag="node_editor_tag",
+        callback=_callback_link, 
+        delink_callback=_callback_delink
+    ):
+
+- create a node and you can specify the attribute (the dot) if it's input or output
+
+
+================================================= TEXTURES AND IMAGES===========================================
+- in dearpygui images are texture_registry
+- There is 3 types of tyextures: 
+                                - static 
+                                - dynamic : like a video, active rendering
+                                          : use set_value()for update , but width and height should not change
+                                - raw
+
+- This textures are used in the following: 
+                                - mvDrawImage
+                                - mvImage
+                                - mvImageButton
+                                - mvImageSeries
+
+
+we need to create a texture_registry and add our texture to this texture registry.
+(you can still use the debug tools, to see all the textures that are available in texture registry)
+
+
+
+============ THEMES ================= 
+Themes are containers, composed of: 
+-theme components: to specify item type (mvAll for all item, or specific item)
+-theme colors: to specify the color with add_theme_color
+-theme styles: to specify the style with add_theme_style
+
+Can be bind to : 
+- default theme, with bind_theme(global_theme)
+- container , propagate to it's children
+- item type , with bind_item_theme(item_theme)
+
+
+for themes and styles we have three types : 
+
+mvThemeCat_Plots : for plots
+mvThemeCat_Nodes : for Nodes
+mvThemeCat_Core  : for other
+using the category= in the both method add_theme_style or add_theme_color 
+
+
+
+
+we have the predined variables: 
+mv_Plot_Col (for plot colors)
+mv_Node_Col 
+mv_theme_colText (for text color)
+mv_theme_ColBorder... etc
+
+
+- Applying a theme to a container will propagate the theme to its children
+- Applying a theme to an item will overide any previous themes on the specified item if the theme contains an applicable component
+
+The theme prioritizes the latest applied theme in the order of
+- 1. specific item
+- 2. container inherited
+- 3. global
+
+
+
+- we can set themes for disabled items like this: 
+
+with dpg.theme as [global_theme/item_theme]:
+
+    # Setting the color of whatever mvTheme_Col...
+    dpg.add_theme_color(dpg.mvTheme_Col[specificity of itme], [124, 231, 210], category=)
+
+bind_theme(global_theme)
+bind_item_theme(item_theme)
+
+# to show the dpg window
+dpg.show_style_editor()
+
+# using the above function make you see how you want to style your app.
+And then just remember the configuration and code it
+
+=============== INIT FILES ===================
+ These are just for saving the session
+Below is an example of using init files to preserve settings between sessions.
+
+Position the windows
+
+Press the save button and the init file will be saved in the current working directory
+
+Restart the app and see your windows in the previous positions.
+
+save_init_file
+configure_app
+
+def save_init():
+    dpg.save_init_file("dpg.ini")
+
+dpg.configure_app(init_file="dpg.ini")  # default file is 'dpg.ini'
+with dpg.window(label="about", tag="main window"):
+    dpg.add_button(label="Save Window pos", callback=lambda: save_init)
+
+with dpg.window(label="about", tag="side window"):
+    dpg.add_button(label="Press me")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+
+body{
+    background-color: #EEE;
+    width: 800px;
+    margin: auto;
+}
+
+.container{
+    border:3px dashed rgb(147, 0, 0); 
+    /* height: 500px;
+    width:800px;  */
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 150px 150px ;
+
+    grid-auto-flow: row;
+    grid-auto-columns:400px;
+}
+
+.item{
+    background-color: rgb(46, 129, 254);
+    border: 2px solid #10007b;
+    color:#FFF;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+
+.ia{
+    grid-column:1/-1;
+}
+
+.if{
+    grid-column:2/3;
+}
+
+/* 34:00 */

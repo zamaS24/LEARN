@@ -1,0 +1,37 @@
+In the code:
+
+- List comprehension:
+    line 35: frequent_itemsets = [frozenset({item}) for item, count in item_counts.items() if count >= min_support_count]
+.
+
+
+- enumerate: 
+    line 40: for i, itemset1 in enumerate(frequent_itemsets):
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

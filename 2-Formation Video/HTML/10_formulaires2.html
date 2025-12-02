@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta char="utf-8">
+        <title> FV Formulaires 2/2</title>
+    </head>
+    <body>
+        <!--Well this is just a comment okay. I don't really need you for sure to commit it in here
+            - <fieldset form ="id_form" disabled> </fieldform> : Pour desactiver genre mettre inaccessible
+            - <select>
+            - form 
+            _optgroup et option, des fois on passe dans value si on veut lenvoyer en serveur. 
+            - disabled! 
+        -->
+        
+
+        <form method="post" id="ID_form" action="">
+
+            <fieldset form="ID_form" disabled>
+                <legend>Ma section </legend>
+                <p>nom : <input type="text" name ="username"></p>
+                <p><input type="submit" name="valid_form" value="Envoyer"></p>
+                <p><textarea rows="10" cols="65"></textarea></p>
+            </fieldset>
+        </form>
+
+        <form method="post" id="ID_form0" action="">
+
+            <fieldset form="ID_form0">
+                <legend>Ma section_0 </legend>
+                <p>nom : <input type="text" name ="username"></p>
+                <p><input type="submit" name="valid_form" value="Envoyer"></p>
+                <p><textarea rows="10" cols="65" placeholder="Votre text ici... "></textarea></p>
+                
+                <p>Choix système </br>
+                    <select name="ChoixOS" form ="ID_form0"> 
+                        <option> windows</option>
+                        <option> Linux </option>
+                        <option> MacOS</optoin>
+                    </select>
+                </p>
+
+                <p>Choix de la langue </br>
+                    <select name="Choix Langue" form = "ID_form0">
+                        <option value ="Français"></option>
+                        <option value ="Arabe"></option>
+                        <option value ="Anglais"> </option>
+                    </select>
+                </p>
+
+                <button type="button">Cliquez ici! </button>
+                <p>Choix jeux </br>
+                    <select name="Choix jeux" form = "ID_form0">
+                        <optgroup label="RPG">
+                            <option>Final fantasy</option>
+                            <option>The legend of zelda</option>
+                        </optgroup>
+                        <optgroup label ="FPS">
+                            <option disabled> Valorant </option>
+                            <option> Fortnite </option>
+                            <option> CS:GO </option>
+
+                        </optgroup>
+                    </select>
+            </fieldset>
+        </form>
+        
+    </body>
+</html>

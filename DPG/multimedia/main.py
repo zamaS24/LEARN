@@ -1,0 +1,43 @@
+import dearpygui.dearpygui as dpg
+from App import App
+
+
+dpg.create_context()
+dpg.create_context()
+dpg.create_viewport(
+    title="MPEG - Search algorithm",
+    width=1080, height=720
+)
+
+
+# Main App
+App()
+
+
+dpg.setup_dearpygui()
+dpg.show_viewport()
+
+# dpg.start_dearpygui()
+while dpg.is_dearpygui_running():
+    # insert here any code you would like to run in the render loop
+
+    # you can manually stop by using stop_dearpygui()
+    # print("this will run every frame")
+    dpg.render_dearpygui_frame()
+
+dpg.destroy_context()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

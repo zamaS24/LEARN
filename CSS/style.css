@@ -1,0 +1,136 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}        
+
+html{
+    /* border: 2px solid red;  */
+    padding:0px; 
+}
+
+nav{
+    /* border: 3px solid green; */
+    position: fixed;
+    top:0; 
+    width: 95%;
+    margin: 10px;
+    z-index: 100;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
+nav li{
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li ul a{
+    margin: 10px; 
+    text-align: center;
+}
+
+
+
+a{
+    /* border: 1px solid red;   */
+    outline: 1px solid red;
+
+}
+
+
+
+ul { 
+    /* border: 1px solid red;  */
+    padding: 0; 
+    margin: 0; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+body{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center; /* justify content axis : like X axis in a 2d plane */
+    align-items: center; /* align-items axis : like the Y axis in a 2d plane */
+
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 3px solid rgb(64, 17, 66);
+    margin: 0px 10px 0px 10px; 
+}
+
+
+footer{
+    /* border: 3px solid black;  */
+    margin: 10px; 
+    width: 100%; 
+    text-align: center;
+    margin: 10px; 
+}
+
+.container{
+
+    background-color: burlywood;
+    border: 3px solid hsl(34, 100%, 20%); 
+    border-radius: 15px;
+    box-shadow: rgb(225, 168, 93);
+    
+    margin: 10px; 
+
+    /* to center the contents */
+    display: flex;
+    flex-wrap: wrap;    
+    width: 100%; 
+    justify-content: center;
+    align-items: center;
+
+    margin: 100px; 
+}
+
+
+.item{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(225, 168, 93);
+    margin: 10px;
+    /* border: 2px solid red;  */
+    border-radius: 5%;
+    box-shadow: 1px 1px 1px black; 
+
+    /* Pointer cursor */
+    cursor: pointer; 
+
+    /* center the elements that are inside the item class  */
+    position: relative;
+    top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item:hover{
+    box-shadow: 10px 5px 5px 5px red;
+}
+
+
+.overflow{
+    width: 50px;
+    background-color: rgb(93, 87, 174); 
+    overflow: hidden;
+}
+
+.overflowed{
+    width: 100px;
+    height: 100px;
+    background-color: blueviolet;
+}
+
+.flex-column{
+    display: flex; 
+    flex-direction: column;
+}
+

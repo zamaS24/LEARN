@@ -1,0 +1,177 @@
+[MATCH]
+-Searching for patterns, existing nodes, relationships, 
+
+[RETURN]
+- it is needed for reads
+- specify what you want to return: nodes, relationships, properties, patterns. 
+- you can return multiple values with alias names like
+    return p.movieName as name, p.dateNiass as 'Date de Naissance'
+
+[CREATE AND UPDATE AND DELETE OPERATIONS]
+[CREATE] 
+- To insert nodes, relationships, patterns into neo4j. 
+- In the CREATE statement we don't specify the RETURN 
+- To add a relationship you have first to match the two nodes otherwise it we use create it*
+ will create duplicate nodes. 
+
+[UPDATING DATA]
+[SET]
+
+-with set you can add aditional properties or modify existing properties 
+ match(p:PERSON{name:"hamza"})
+ set p.birthdate = date('2001-04-01'). If it exists it will modify it. If it doesn't exist 
+ it will add it as a property
+
+- you can return the data you have modified. example
+ match(p:...
+ set...
+ return p
+
+- We can modify the attributes of the nodes and also RELATIONSHIPS 
+
+[DELETE]
+[DELETE RELATIONSHIP]
+-to delete a relationship you have first to find it with a match and give it a varibale name
+ and then use the DELETE var
+ example: match(p:PERSON{name:"Hamza"})-[h:HAS_PC]->(msi:LAPTOP{name:"MSI"})
+          delete h
+[DELETE NODE]
+- to delete a node, same, find it and then delete it. 
+
+[DELETE BOTH NODES AND RELATIONSHIPS]
+-using the DETACH DELETE DETACH DELETE syntax tells Cypher to delete any relationships
+ the node has, as well as remove the node itself.
+
+[DELETE PROPERTIES]
+- remove the property using the 
+  match...
+  remove n.birthdat
+- setting the property to null
+  match...
+  set n.birthdate = null
+
+[AVOIDING DUPLICATE DATA USING MERGE]
+- MERGE does a "select-or-insert" operation that first checks if the data exists in the database. 
+ If it exists, then Cypher returns it as is or makes any updates you specify on the existing
+ node or relationship. If the data does not exist, then Cypher will create it with the information 
+ you specify.
+
+- MERGE relationships: you need to match the nodes first and then use 
+ MERGE (p)-[:relation]-> (f)
+ becuz if we used the merge at the beginning, cypher will look if the whole pattern exist or not, 
+ if it is not existing, he will create all the pattern including the nodes and the relation
+
+- an existing node, is a node that has all same properties. and same labels. 
+
+
+[MERGE ON CREATE & ON MATCH]
+-Perhaps you want to use MERGE to ensure you do not create duplicates,
+ but you want to initialize certain properties if the pattern is created and update other
+ properties if it is only matched. In this case, you can use ON CREATE or ON MATCH
+ with the SET keyword to handle these situations.
+ example: 
+ MERGE (m:Person {name: 'Mark'})-[r:IS_FRIENDS_WITH]-(j:Person {name:'Jennifer'})
+  ON CREATE SET r.since = date('2018-03-01')
+  ON MATCH SET r.updated = date()
+ RETURN m, r, j
+
+
+[FILTERING QUERIES]
+https://neo4j.com/developer/cypher/filtering-query-results/
+
+[LOAD CSV from youtube video]
+- check data path from settings, data path 
+- go to that folder then /relate-data/dbmss
+- choose database folder (by looking in the json filder inside)
+- go to import folder 
+- past the csv in the import folder
+
+- load csv with headers from "file:///caracteristiques.csv 
+  as row
+
+LOAD CSV WITH HEADERS  FROM 'file:///lieux.csv' AS row FIELDTERMINATOR ";"
+merge (test:test{adresse:row.adr, v2:row.v2})
+
+
+
+[METHODS OF INTS IN NEO4J]
+neo4j.isInt, neo4j.integer.inSafeRange, neo4j.integer.toNumber, and neo4j.integer.toString.
+
+ex:
+var smallInteger = neo4j.int(123)
+if (neo4j.integer.inSafeRange(smallInteger)) {
+  var aNumber = smallInteger.toNumber()
+}
+
+
+DATES 
+create(t:TEST{datenaissance:date({year:2022,month:03, day:01})}) return t
+
+
+time
+create(t:TEST{tempdessai: time({hour:12, minute:31, second:14})})
+create (t:TEST{temps: time("16:05")})
+
+
+
+LOAD CSV WITH HEADERS  FROM 'file:///caracteristiques.csv' AS row FIELDTERMINATOR ";"
+merge (accident:ACCIDENTT{
+    id:toInteger(row.Num_Acc),
+    col:toInteger(row.col),
+    intersec:toInteger(row.int),
+    date_acc:date({year:toInteger(row.an),month:toInteger(row.mois), day:toInteger(row.jour)}),
+    heure_acc:time(row.hrmn),
+    lat:toFloat(row.lat),
+    long:toFloat(row.long)
+})
+
+
+MATCH (n {name: 'John'})-[:FRIEND]-(friend)
+WITH n, count(friend) AS friendsCount
+WHERE friendsCount > 3
+RETURN n, friendsCount
+
+
+match (route:ROUTE)<-[:EST_LOCALISE]-(accident:ACCIDENT)
+with  route,  count (accident) as nbr_accidents 
+where nbr_accidents = 5
+return route, nbr_accidents
+
+
+The RETURN clause has three sub-clauses that come with it: SKIP/LIMIT and ORDER BY.
+
+
+MATCH
+  (user:User {name: 'Adam'})-[r1:FRIEND]-(friend),
+  (friend)-[r2:FRIEND]-(friend_of_a_friend)
+RETURN friend_of_a_friend.name AS fofName
+
+//This has a single pattern with two paths. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[COMMMON MISTAKES TO AVOID AND EXTRA NOTES]
+- when you make a query and searching for attributes, some nodes have attributes and some not. 
+ those who don't have the attributes you searching for, they will return as null. even if 
+ attribute doesn't exist at all. return p.adlfhqsdfm it will return null. 
+
+- In finding pattersn, be careful on naming your names with same variable. 

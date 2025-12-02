@@ -1,0 +1,56 @@
+[INSTALLING AND SET UP]
+
+    -run $ npm i express
+    (that gets added to our package.json)
+
+    - / is the route of the index page
+
+[CREATING ROUTES]
+    -(du site) Routage fait référence à la détermination de la façon dont une application 
+    répond à un nœud final spécifique, c’est-à-dire un URI (ou chemin) et une méthode de 
+    requête HTTP (GET, POST, etc.).
+
+    - app.get('/', function(req,res){})
+
+    -use nodemon $ npm i -D nodemon
+
+    -go to package.json make these changes: 
+        -in "scripts": 
+        "start": "node index", 
+        "dev": "nodemon index"
+    - run $ npm run dev 
+
+[RENDERING HTML]
+    app.get('/', (req,res) => {
+        res.sendFile(path.join(__dirname, 'public', 'index.html')); 
+    });
+
+[STATIC FOLDER]
+    -with only that line of code we put all of our html contents and css. But accessing it through the url 
+    we need to specify for example the /about.html 
+
+
+[REST API]
+-create a route 
+    app.get('/api/members', (req, res) => {
+
+    }); 
+    // in the example we are not dealing with a database, we just dealing with a hard coded array
+    it's the same principle when we dealing with routes and response and all of that stuff
+
+[MIDDLEWARE]
+    - they are functions that have access to the request and response and you can change things and add things 
+    - moment a package that deals with dates install it with : 
+    npm i moment
+
+
+[EXPRESS ROUTER]
+    -create folder routes
+
+
+
+
+
+
+
+

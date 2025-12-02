@@ -1,0 +1,26 @@
+Must know: 
+rufus, iso
+mbr, grp !!
+uefi
+paritions
+
+
+Avant l'installation il faut toujours voir est ce que le disque lequel on souhaite installer dessus
+windows est de type MBR ou GPT.
+
+hard drive, legacy, bios... bootable flash drive... etc.
+
+Quand on selectionne le type de 
+Dans rufus
+MBR ===> bios or uefi
+GPT ===> uefi.
+
+sur le pc de liza: au démarage + f12 (boot options)
+                   +f2 pour aller au bios 
+
+
+driver identifier is the best driver website. Amazing and fucking amazing !     
+
+
+
+

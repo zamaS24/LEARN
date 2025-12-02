@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sons Et Videos FV</title>
+    </head>
+    <!--
+            audio : mp3 compatible avec tout
+                    wav compatible avouc tout sauf IE  
+                    ogg compatible tout sauf IE et safari 
+
+            video : mp4 
+                    webm
+                    ogg
+        -->
+    <body>
+        <h1> Sons et videos </h1>
+        <audio controls >
+            <source src="Et Si Tu N'Existais Pas - Joe Dassin Lyrics.mp3" type="audio/mpeg" preload="metadata">
+            Votre navigateur ne supporte pas l'audio. 
+            <!--ON peut mettre src dans la balise audio ! -->
+            <!-- Preload pour accelerer le chargement de la parge, genre il n'a pas a telecharger tout le fichier
+                mais plutot de telecharger le metadata avec le load de la page-->
+        </audio>
+
+        <audio src="Et Si Tu N'Existais Pas - Joe Dassin Lyrics.mp3" controls autoplay loop>
+            Votre navigateur ne supporte pas l'audio. 
+        </audio>
+        
+        <video controls>
+            <source src="myVideo.mp4" type="video/mp4">
+            <!--Les attributes Il ya le auto play le  width et height ...etc-->
+            Votre navigatuer ne supporte pas les videos 
+        </video>
+
+    </body>
+</html>

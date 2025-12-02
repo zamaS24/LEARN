@@ -1,0 +1,22 @@
+{
+  "description": "This is just a test to make a package and then link it with npm link and try to execute it with npx hello, since the hello is in the binaries, which means it will act as comands.",
+
+  "name": "hello",
+  "version": "1.0.0",
+  "main": "index.js",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start": "node hello.js"
+  },
+
+  "bin": {
+    "hello": "bin/hello.js"
+  },
+
+  "keywords": [],
+  "author": "OMARI Hamza",
+  "license": "MIT"
+}
+
+

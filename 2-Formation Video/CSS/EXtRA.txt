@@ -1,0 +1,3 @@
+-> margin collapse: when two elements have their margin collpsed. so when you set the margin to the child element, it will not affect to the collapsed margins
+    this one accures sometimes when you have stuff like width100% .. etc, to resolve this you need to add padding to parent document
+

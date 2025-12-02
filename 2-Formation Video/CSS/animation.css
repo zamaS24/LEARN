@@ -1,0 +1,27 @@
+
+/* You can use transitions or animations 
+    -> In transitions you need to make sure that the property is continuous
+    exemple: in a tooltip if you want to make the transition in the visibility, you need to use the opacity attribute.
+    because the visibility isn't continuous like opacity, so using the visibility attribute won't give you the smooth transition
+*/
+
+
+
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+
+  /* whenever the width changes it will takes Two seconds for the effects to be applied  */
+  transition: width 2s;
+}
+
+#div1 {transition-timing-function: linear;}
+#div2 {transition-timing-function: ease;}
+#div3 {transition-timing-function: ease-in;}
+#div4 {transition-timing-function: ease-out;}
+#div5 {transition-timing-function: ease-in-out;}
+
+div:hover {
+  width: 300px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Images FV</title>
+    </head>
+    <body>
+        <!--La partie relative c'est tout ce qui trouve à proximité du fichier
+        - img est une balise orpheline. pas de </img>
+        - le chemin absolu c'est le chemin complet! 
+        -->
+        <p> Images </p>
+        <img src="korean_girl.jpg" alt="Text alternatif de l'image" width="500" height="auto">
+        <!--alt genre dans le cas ou le navigateur n'a pas charge l'image-->
+
+
+        <figure>
+            <img src="saitama.jpg" width="300" height="250">
+            <figcaption> C'est saitama il m'inspire tellemnet </figcaption>
+        </figure>
+
+
+        <img usemap="#worldmap" src="carte.jpg" alt="Carte du monde">
+        <map name="worldmap">
+            <!--pour shape il existent : 
+            - rect 
+            - circle 
+            - poly 
+            -->
+            <area href="carte_rouge.png" shape="rect" coords="0,0 125,125">
+        </map>
+
+        <picture>
+            <source srcset="saitama.jpg" media="(min-width = 600px)">
+            <img src="saitama.jpg" alt="pas d'image">
+        </picture>
+
+
+    </body>
+</html>

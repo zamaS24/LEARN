@@ -1,0 +1,41 @@
+<!-- this just shows how we can integrate REACT in an index.html file -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Hello React!</title>
+
+    <!-- React library imports  -->
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // React code will go here
+      console.log('something happened right ? ')
+
+        
+        // Now this is something we want to talk about mate okay.
+        class App extends React.Component{
+            render() {
+                return(
+                    <div> Hello this is a react component </div>
+                ); 
+            }
+        }
+
+
+
+        ReactDOM.render(<App/>, document.getElementById('root'))
+
+    </script>
+  </body>
+</html>

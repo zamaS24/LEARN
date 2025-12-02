@@ -1,0 +1,13 @@
+to create a database: 
+    use <db_name> 
+to show databases 
+    show databases 
+to show collections 
+    show collections 
+to show all the documents 
+    db.<collection_name>.find()
+collection = table 
+row = document 
+
+
+- a cluster (multiple interconnected servers, or nodes ) can be multiple databases 

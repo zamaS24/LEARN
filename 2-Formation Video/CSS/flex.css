@@ -1,0 +1,62 @@
+/* Padding, border, outline, margin */
+
+
+
+/** Container
+-> justify content : aligning on the main axis,  genre pour tout le content (toutes les boites au meme temps dans ce item)
+    -> flex-end : 
+    -> center: centering them in the middle 
+    -> space between : evenly distributed the items 
+    -> space evenly : evenly distributed the sapce between all the times 
+
+
+-> flex-direction : (row by default) 
+    -> column (to set main axis horizontally) 
+
+-> flex-wrap (so when there is a lot of items, it will break the line) 
+    -> nowrap (by default) 
+    -> wrap (to wrap the elements , sauter la ligne) 
+
+-> align-items : aligning over the ccross axis 
+    -> flex-start: 
+    -> flex-end: 
+    -> ecenter: 
+
+*/
+
+
+
+.flex-container{
+    display: flex;
+    /* flex-direction: column; */
+    
+    outline: solid 3px red; 
+}
+
+
+
+.flex-item{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+    height: 50px;
+    border-radius: 10%;
+    border: solid 3px rgb(114, 98, 36);
+
+    margin: 3px;
+    background-color: rgb(234, 185, 121);
+    text-shadow: 5px black;
+
+    transition: width 1s ease-in-out;
+
+}
+
+
+
+.flex-item:hover{
+    width: 300px;
+}
+

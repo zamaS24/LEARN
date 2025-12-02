@@ -1,0 +1,21 @@
+Hello my name is OMARI Hamza, and I live in Algeria. I am very poor also I am a student doing a master degree in computer vision. Our ressources to study is very limited and also I can't to afford courses in private institue. Iam going to make a project about computer vision and machine learning and deep learning which will extract from screenshots problems (tickets) submited by users and then train a model suggest some solutions. My knowledge in practical MLusing frameworks like TF is very limited, and I feel that I don't have the enough knowledge to make this project (the part where in the react app we will interact with backend api that has the model). So I was looking for online courses and I find this course, I want to take it but I can't because I don't have enough money. For this I wish if you can really take my demand in consideration and provide me this course, it will help me to graduate and make an efficient project and learn alot about Practice with Tensor Flow (TF). 
+
+Hamza OMARI
+Student of Computer Vision in Univeristy of science and technology Houari Boumedien - Algeria - Africa
+University email : hamza.omari@etu.usthb.dz
+
+
+
+Hello my name is OMARI Hamza, and I live in Algeria. I am very poor also I am a student doing a master degree in computer vision. Our ressources to study is very limited and also I can't to afford courses in private institue. Iam going to make a project about computer vision and machine learning and deep learning which will extract from screenshots problems (tickets) submited by users and then train a model suggest some solutions. My knowledge in tensorflow  is very limited, and I feel that I don't have the enough knowledge to make this project (the part where in the react app we will interact with the model ). So I was looking for online courses and I find this course, I want to take it but I can't because I don't have enough money. For this I wish if you can really take my demand in consideration and provide me this course, it will help me to graduate and make an efficient project and learn alot about tensorflow framework and apply my theory konwledge since I only am confident with the the math and it's time to dive deep in TF. as I am soon enough to finish the first courses I need this course to continue the path.
+So it is about the goal of making a good final year project and improve my knowledge using tensorflow framework
+
+Hamza OMARI
+Student of Computer Vision in Univeristy of science and technology Houari Boumedien - Algeria - Africa
+
+You can verify me by reaching me through the :
+University email : hamza.omari@etu.usthb.dz
+
+
+
+
+

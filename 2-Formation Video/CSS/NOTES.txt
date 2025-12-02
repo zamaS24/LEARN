@@ -1,0 +1,462 @@
+/* lien vers doc https://htmlcheatsheet.com/css/ */
+
+------------------------------------- INTRODUCTION DESIGN (CSS)
+/* Un commentaire dans css comme dans le c */
+
+- * pour tous les éléments
+- # pour id 
+- . pour class
+- Un sélécteur prend un élément particulier de la page pour lui appliquer un style
+selecteur{
+    property: value; 
+    ...
+}
+- id est unique, class est partagé
+#id {
+
+}
+
+.class{
+
+}
+
+selecteur#id {
+    /* ceci veut dire les deux, le selecteur avec id */
+    
+}
+
+selecteur1 selecteur2#id {
+    des qu'on trouve le selecteur2#id dans le selecteur1
+}
+
+balise[att="val"]
+- dans CSS on peut faire les choses très très précisent. 
+- le css va appliquer les changements d'une manière séquentielle
+
+sel1, sel2 {
+    appliquer pour sel1 et sel2
+}
+
+- la métapropriété : une seule ligne de code, exemple: border: 1px solid red; 
+
+
+------------------------------------- STYLISER TEXT 1/1 
+-> font-style: normal, italic, ... etc. 
+-> font-variant: small-caps <ceci rend le tout en majuscule. Et les majuscules deviennent plus grandes>
+-> font-weight: bold, lighter, ...etc  (Exemple: changer le font weight de h1 vers normal )
+-> font-size: 16px, 70%...etc (la taille de la police pixel, pourcentage)
+
+- em et ex: 
+dans font-size de plus de pixels et pourcentage on peut utiliser em et ex, 
+1em vet dire 100% la taille de l'élément parent
+
+font-size: 
+    - xx-small tres petit
+    - x-small 
+    - medium
+    - large
+    - x-large
+    - xx-large
+
+-> line-height: 25px, 0.8em, ...etc
+-> font-family: serif( le par défaut gérer par le navigateur), sana-serif (un peu informatique), monospace (c'est la meme largeur), cursive (ecriture scolaire genre m3awja), system-ui, calibri
+quand on met: font-family: Papyrus, arial; veut dire que s'il trouve pas Papyrus, il va mettre arial. 
+
+
+factorisation des attribus: 
+-> font: style variante epaisseur taille hauteur_ligne police 
+respecter l'ordre, attention
+
+
+
+------------------------------------- STYLISER TEXT 2/2
+- text-decoration:underline, overline, line-through
+- text-shadow: 2px 2px 5px rgb(255, 0, 0);
+- tex-align:; 
+- text-transform: capitealize, uppercase, lowercase;
+
+- text-align: (par défaut c'est à left, right, center, justify)
+vertical-align: baseline, super, top, bottom; Ca va appliquer un alignement vertical (par exemple l'utiliser dans
+une image)
+
+- text-indent: 12px (1.5em)(pour gerer l'indentation du text)
+- text-overflow: elipsis(genre un text qui est dans un bloc mais qui risque d'etre dépassé et qu'on va afficher seulement ...(3points) on peut le faire en programmation mais pas la peine), clip.
+- letter-spacing:  (l'espacement des caracteres dans notre text generallemnet on met des pixels)
+
+- white-space: normal, nowrap(pas de coupure)
+- word-spacing: 
+- word-wrap: break-word
+- direction:initial(valeur de base), rtl(right to left) (la direction du texte genre de droite à gauche par exemple)
+- text-align-last: choisir l'alignement de la derniére ligne du text. 
+
+------------------------------------- Couleur et fond
+color: rgb(), rgba(), #XXXXXX
+background-color:     
+backgroun-image: url()
+background-position: top, bottom, left, center, bottom left, 25px 30px, 25% 70%
+background-repeat: no repeat, space
+background-size: cover (pour s'etaller sur tout l'ecran) l'image va s'adapter au redimensionnement
+background-origin: padding-box, border-box, content-box; 
+background-attachement:  local , scroll(quand je défile la page, le  fond défile avec le contenu), fixed(va fixer le fond (l'image) quand on scroll)
+
+
+------------------------------------- Styliser text$
+-> list-style-image:url(path/to/image)
+- Des images pour les puces ()
+- il est préférable de travailler avec des SVGs que des PNGs
+
+->  list-style-position: outside, inside
+- C'est pour  dire est ce que la puce de la liste est incluse dans l'element ou pas, 
+    est ceque à  l'exterieurede la box ou a l'intérieur de border
+
+-> list-style-type: none, disc, square, circle, armenian, georgian, lower-latin(a b c..), lower-greek hiragana(japonais) 
+- pour  choisir le choix de la puce, on peut l'enlever (none), 
+- métapropriété: list-style : type position image
+
+
+------------------------------------------ modèle de boîte ---------------------------------
+- div c'est des balises de #blocks
+- span et img par exemple sont des balises #inline
+- les elements HTML fonctionnent par ce principe de boite
+- body aussi est une boite
+- Dans cette séance on essay de voir les effets visuels. Des différentes boites.
+
+- width | min-width | max-width
+- height | min-height | max-height
+
+- Voir l'image de modèle de boite: 
+    -> content 
+    -> margin: la marge (bordure) extérieure
+    -> padding: marge intérieur
+    -> border: 
+    -> outline: 
+
+padding:-> padding-top
+        -> padding-right
+        -> padding-bottom
+        -> padding-left
+
+- méta propriétée: 
+padding: <padding-top> <padding-right> <padding-bottom> <padding-left> 
+(voir l'ordre de l'horloge)
+padding: <vallue> (ceci signifie que  la valeure est repartie  vers les quatres)
+
+
+
+
+margin:-> margin-top
+        -> margin-right
+        -> margin-bottom
+        -> margin-left
+
+- méta propriétée: 
+margin: <margin-top> <margin-right> <margin-bottom> <margin-left> 
+(voir l'ordre de l'horloge)
+padding: <vallue> (ceci signifie que  la valeure est repartie  vers les quatres)
+
+- me: quand il ya un chauvauchement genre entre padding top et bottom de deux boites.
+exemple 10 px top et 10 px bottom. L'intersection reste 10px car la condition est verifie. 
+
+overflow
+overflow-x
+overflow-y
+text-overflow
+overflow-wrap: break (pour casser le mot)
+
+
+centring:(chat gpt)
+    Setting margin: auto on an element works to horizontally center it only when
+    it has a specified width. If the element doesn't have a width specified, it will take up
+    the full available width, and the margin: auto rule won't have any effect.
+
+------------------------------------------------ BRODURES ET CONTOURS ----------------------------------
+->  margin: auto; (ça veut dire qu'il va le regler automatiquement)
+- Dans une image on peut spécifier la hauteur par rapport a la largeur. pour eviter de la deformer
+
+->  border : 2px solid red; 
+img {
+    width: 400px;
+    height: auto; 
+}
+
+img:hover{
+    // ça c'est quand on fait un evenement de hover il va appliquer le css en dessous
+    // ... code css ici
+}
+
+-> border-image.com 
+la proprièté border image: va couper l'image en neufs parties. 
+en gros c'est de mettre une image comme bordure. 
+
+-> border-radius: 10px; 
+on peut également faire 
+    border-top-left-raidus: 
+    border-top-right-radius: 
+    border-bottom-right-radius: 
+    border-bottom-left-radius: 
+
+méta propriété de border-raidus:
+- border-radius: top-left top-right bottom-right bottom-left;
+
+les countours c'est les outlines
+comme border , on a 
+outline-width
+outline-style
+outline-color
+
+outline-offset : (elle nous permet de mettre une marge entre le boder et outline)
+
+on retourne sur les tableaux; 
+table, td, th{
+    border: 1px solid red; 
+
+}
+
+-> border-collapse : separate, collapse;
+    separate: pour laisser les cellules separes
+    collapse : pour les coller
+    
+-> border-spacing: les espaces entres les bordures  dans notre exemple des cellules du tableau
+
+
+
+-------------------------------------------------------- AFFICHAGE ET POSITIONEMENT ------------------------------------------------
+-> display: none (ça ne va pas l'afficher carrement.)
+
+- L'orsque on mais des paragraphes les uns après les autres, on aura un affichage de type blocks
+c'est l'attribut par défaut (display: block)
+
+- les images sont de type inline, c'est à dire l'orsqu'on met deux images l'une après l'autre elles seront affichées sur une ligne         
+-> display: inline;
+       : block; (je l'ai essayé et ça marche bien)
+       : list-item; (il va se comporter comme le style d'une liste)
+       : inline-block;
+       : inline-table: (un style de cellules à tableaux)
+       : none (Comme si il l'enlève)
+
+-> display: flex
+-> display: grid ()
+
+-> visibility: visible (par défault l'élément est à visible)
+          : hidden (Pour le masquer)
+          : collapse (comme les cellules des tableaux)
+
+
+-> opacity: 0, 0.25, 0.5, ..., 1 (ça varie entre 0 et 1 , de 0 à 100%, c'est le degré de visibilité)
+-> position: static (positionement par défaut)
+        : top, right, bottom, left
+
+-> position: relative (ici veut dire que c'est relative a l'emplacement par defaut et on doit 
+                    spécifier combien dans les lignes suivantes )
+-> left: 50px; (ça va se deplacer vers la droite avec 50 px)
+
+-> position : fixed (An element with position: fixed; is positioned relative to the viewport, 
+                 which means it always stays in the same place even if the page is scrolled. 
+                 The top, right, bottom, and left properties are used to position the element.)
+bottom, right, ...etc
+
+
+-> position: absolute 
+chatGPT : the "position: absolute" attribute is a css property used to position an HTML element
+          within its nearest positioned ancestor. 
+w3schools: An element with position: absolute; is positioned relative to the nearest positioned ancestor
+           (instead of positioned relative to the viewport, like fixed).
+           However; if an absolute positioned element has no positioned ancestors, it uses the document body, 
+           and moves along with page scrolling.
+top bottom right..etc
+(des fois il ya un effet d'empilements, c'est pas les elements qui de disparaitrent)
+-> z-index: (On fait un z-index sur les elements qui sont empilés, càd celui qu'on veut afficher en premier
+         ou en deuxième, etc..., l'ordre de priorité est en corrélation directe avec la valeur)
+
+
+
+-> position: sticky
+w3schools: An element with position: sticky; is positioned based on the user's scroll position.
+           A sticky element toggles between relative and fixed, depending on the scroll position. 
+           It is positioned relative until a given offset position is met in the viewport - then 
+           it "sticks" in place (like position:fixed).
+
+
+
+-> float: left, right, none
+      (floatement, comme dans le word, si on met a left, on aura du texte a droite, puis il continuera 
+      en bas de l'element)
+-> float: none
+
+-> z-index only works on positioned elements (position: absolute, position: relative, position: fixed,
+    or position: sticky) and flex items (elements that are direct children of display:flex elements).
+
+On peut mettre les elements on floatant: Exemple section a gauche, et le aside en floatant à droite
+
+
+-> clear: left, right, both(ça veut dire tu efface le floatement à gauche ou à droite ou both)
+
+
+
+--------------------------------------------- modèle avancé de boite--------------------------------------------------
+box-shadow: <decalage en X> <decalage en Y> < la portée> <la couleur>
+(c'est comme text-shadow)
+-> box-shadow: 0 0 3px black; 
+
+Quand on a un div, et on fait un padding, ca va augmenter l'espace de ce div, 
+genre la couleur hedik elle va débordé. D'ou la propriete: 
+-> box-sizing: content-box; (comportement par défaut)
+-> box-sizing: border-box; (ca prend en compte les fameuses valeurs de bordures de marge interieur dans le calcul )
+(le margin n'est pas pris en compte, car ca s'agit d'une marge exterieure a la boite)
+
+(comment CSS gère les modèles de boites)
+
+====================================================================== CSS FLEXBOX ================================================
+
+
+FLEXBOX on travail soit à l'horizontal, soit à la verticale en meme temps.
+
+----------------------------- CONTAINER 
+
+-> display: flex 
+-> display: inline-flex (flex en mode inline)
+
+-> flex-direction: (va choisir la direction, l'orientation des elements du container) donc l'appliquer dans
+                container
+
+-> flex-direction: row (par deafaut)| column | row-reverse | column-reverse
+
+-> flex-wrap: nowrap(par défault) 
+           wrap 
+           wrap-reverse
+wrap veut dire le saut de ligne
+
+-> flex-flow: <direction> <wrap>
+
+
+-> justify-content: flex-start (nous permettre de repartir les elements sur l'axe horizontale)
+                 flex-end (genre l'espace libre sera en end et non pas en start genre ça commence 
+                 du end) 
+                 center => ça va mettre le tout d'une manière centrée
+                 space-between (ça va mettre de l'espace entre les éléments)
+                 space-around
+                space-evenly (espace egaux partout)
+
+On voit que les elements prennet la totalité de la hauteur du container, et pour cela 
+-> align-items:stretch ( par default)
+            flex-start (ici pas de stretch et ca commence du gauche haut)
+            flex-end (comme flex start, juste il commence par la fin)
+            center (dans le centre)
+            baseline
+
+-> align-content: flex-start | flex-end | space-between | space-around | stretch | 
+
+tip: utiliser stretch, avec pas la peine de mettre une hauteur pour le div
+        align-content affects the spacing and alignment of rows of flex items within the flex container when wrapping occurs.
+        align-items affects the alignment of individual items within their respective flex lines
+
+
+
+----------------------------- ELEMENT(flex-item) 
+-> order: <int> // c'est l'ordre de priorité de l'apparation. correlation négative entre int et order
+ça va les mettre dans l'ordre
+
+techniques de gestion de l'espace:
+-> flex-grow: <int>  // c'est la taille de l'objet en question qui est relative aux autres
+                     // Ici il y a une correlation négative tout comme -> order
+c'est aussi combien l'item va prendre de la totalité. 1 ou 1/2 ou 1/3 selon le int
+-> flex-shrink : <int> // le contraire de flex-grow 
+
+-> flex-basis : <length>    // ici genre on lui donne length de l'item et puis le reste va se distribuer
+
+méta propriété 
+-> flex: <grow> <shrink> <basis>
+-> flex: <auto>
+
+-> align-self: flex-start | flex-end | center | baseline | stretch
+(genre si je veux qu'un seul type d'objets de se mettre en stretch)
+
+
+# Meilleure tutorial sur flex-box sur: 
+https://slayingthedragon.notion.site/slayingthedragon/Learn-Flexbox-f403a277d63e472d8e303d4c440abbd1
+
+=========================================== GRID =============================================
+- Grid est fait pour travailler sur des grosses portions de Design. (le gabari) l'entete le contenu le pieds de page, et à l'intérieur utiliser flexbox
+- il fault voir ce que le navigateur prend en charge
+- il y a de centaines de centaines d'application de grid
+
+- un système de grid, c'est des lignes et des colonnes
+
+---------------------------------- CONTAINER 
+- définir les lignes et les colonnes de notre container
+
+-> grid-template-columns: 100px 100px 100px; (nombre de colonnes)
+                        : auto auto auto; (nombre de colonnes de taille automatique)
+                        : auto 150px auto; (un mélage des deux)
+                        : 1fr 1fr 1fr; (fr veut dire free space, veut dire que chaqune va prendre la memeproportion, ceci est un calcul dynamique)
+                        : repeat(3fr) veut dire 3fr 3fr 3fr; (pour eviter de le retaper)
+                        : max-content 1fr 1fr; (un espace minimum)
+                        : min-content 1fr 1fr;
+                        : fitcontent(50px) <val> <val>;     
+                        : minmax(100px,200px);                 
+exemple: Un site qui contient genre deux sections à coté de meme taille mais le contenu du milieur fait le triple. donc on met 1fr 3fr 1fr;
+
+-> grid-template-rows: 150px 150px; (nombre de lignes)
+
+- meta propriete 
+-> grid-template : <rows> / <columns>
+-> grid-auto-rows: auto; (le nombre de lignes de tout ce qui n'est pas spécifié explicitement, il ne fait pas partie des 2lignes*3colonnes de notre GRID)
+
+-> grid-auto-flow: l'emplilement des elements non explicites soit en ligne soit en colonne
+
+
+---------------------------------- GRID-ITEM
+-> grid-column: 1; (indiquer la position de quel colonne cet item doit appartenir)
+              : 1/3 (ça commence de la deuxième ligne vers la troisième, comme si ca prend deux 
+              colonnes en meme temps)
+              : 1/-1 (ça va occuper toute la ligne ici)
+
+
+-> grid-row-start:2; (il commence de la ligne 2)
+
+
+
+
+============== Transition , transform, elmeent:hover (these are so powerful when hovered)
+
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  
+  transition: width 1s;
+  transition: transform 4s; /* This one will annuler the previous one*/
+
+  transition: width 1s, transform 4s; /*This one will combine them */ 
+  trasform: translateY(10px) rotate(180deg) scale() matrix(n,n,n,n,n,n)
+}
+
+matrix: pour une transformation de plusieus niveaux
+
+when a certain width change, a transition effect will be made in a duration of 1second
+
+# it's like a callback in CSS directly 
+div:hover {
+  width: 300px;
+}
+
+this will make when we hover a div the width will change 
+
+
+
+
+========= CSS positioning ==================
+position: relative; 
+    -> positioned relative to it's normal position. 
+
+
+
+relative vs absolute: 
+    -> dans relative quad on a une div fille dans la dive mere.
+    cette div fille va agrandir la div mere, par contre pour absolute c'est comme si la div est totallement détachée.
+    When a child div is set to position: absolute;, it is removed from the normal document flow. This means it no longer affects the layout of other elements, including its parent div.
+box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+
+
+

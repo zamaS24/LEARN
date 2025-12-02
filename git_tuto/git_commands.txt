@@ -1,0 +1,138 @@
+>$ git init 
+>$ git add <nomfichier> / <nom_repo>
+>$ git commit -m "Le message qu'on veut ecrire".
+>$ git add --all * : préparer à sauvegarder tous les fichiers 
+>$ git commit -a -m "mon message"  : ajouter le fichier en questions et le commiter. 
+>$ git add -u : stage all changes, including deletions and modifications.
+
+>$ git log
+    >$ git log <branch-name>
+    >$ git log --graph
+    >$ git log -- <file>
+
+
+>$ git mv <fichier> <nouveau>   : déplacer renomer le fichier. 
+>$ git rm <fichier> : supprimer le fichier.
+
+
+>$ git status : tous ce qui n'est pas encore commité. 
+        Il l'indique par : changes to be committed : et il va lister 
+        les fichiers qui sont prets à etre commit. 
+        meme la différence entre la branche actuelle et la branche distante
+>$ git diff <commit1> <commit2> : comparer deux comits
+
+
+>$ git clone <chemin/lien> [nom] : Cloner un depot de git hub et le nommer par exemple
+>$ git pull : mettre a jour, synchroniser notre version avec la plus recente. (git pull, it will only pull changes for the branch you are currently on, not for all branches.)
+>$ git push origin master : on va pusher vers la branche principale du depot l'ensemble des modifications
+    qui ont été faites. 
+
+>$ git push origin --delete <distant-branch-name> : pour supprimer une branche distante
+>$ git push --set-upstream origin hamza : pour pusher une brance qu'on viens de creer et garder le pull and push de la branche 
+    This option sets the upstream (or tracking) reference for the branch you're pushing. This means that your local branch hamza will be linked to the hamza branch on the remote repository origin. Once set, you can simply use git push or git pull without specifying the remote and branch names.
+
+
+>$ git reset -hard HEAD : git reset --hard HEAD: This command resets the current branch to the exact same commit it is currently pointing to. In other words, it effectively discards any changes or commits that are not pushed or saved elsewhere. It's useful when you want to clean up your working directory and start fresh without losing any commits. 
+>$ git reset -hard HEAD^ : This command moves the current branch pointer (usually HEAD) to the commit immediately preceding the current commit, effectively "undoing" the last commit. The caret symbol (^) is a shorthand notation in Git to refer to the parent commit. So HEAD^ refers to the parent commit of 
+
+
+>$ git revert <id_commit> : Remmetre le depot à l'etat dans ce commit. 
+    Reverting a commit using git revert doesn't remove the original commit from the history. Instead, it creates a new commit that effectively undoes the changes introduced by the specified commit.
+    When you revert a commit, Git doesn't delete or remove the commit itself. Instead, it creates a new commit that negates the changes introduced by the original commit. This new commit reflects the inverse of the changes made in the original commit, effectively canceling them out in the current state of the codebase.
+    The original commit remains in the history, and the revert commit serves to revert the changes brought in by the original commit while keeping a clear record of this action in the commit history.
+
+
+>$ git branch   : pour lister les branches. (Dans le résultat étoile c'est le pointeur vers la branche courante)
+>$ git branch -a : pour lister toutes les branch locales et distantes sur github par exemple
+>$ git branch -r : pour lister toutes les branches distantes 
+>$ git branch <name> : pour créer une branche.
+>$ git checkout -b <name> : pour creer une branche a partir de la branche laquelle on est 
+>$ git checkout <branch_name> : pour switcher vers la branche <branch_name>
+>$ git merge <nom_branche> : pour fusionner <nom_branche>
+    exemple: Deux branches (dev) et (master) 
+    dans la branche (dev) on va modifier le fichier index.html
+    puis on execute >$ git checkout master 
+    puis on execute >$ git merge dev
+
+
+>$ git branch -d <branch_name> : pour supprimer la branche <branch_name>
+
+
+>$ git remote add <name> https://<chemin_vers_depot>
+    To add a named remote repository.
+    So, when you do $ git remote add github <link_to_git_repo>, the <link_to_git_repo> URL you provide will be used as both the fetch and push URL for the remote named github unless you specifically configure them differently.
+    
+    (tip : you can separate the URL for push)
+    $git remote set-url --push github <push_url>
+
+>$ git remote set-url <existing name> https://new-url-here
+>$ git remote rename <existing name> <new name>
+>$ git remote remove <name>
+>$ git remote -v 
+    lister les remote name avec leur url pour push et pull
+>$ git remote -v show origin
+    pour voir l'URL de origin
+
+
+>$ git fetch <name>     : récupérer mettre a jour (applique pas les changements, sert à vérifier)
+>$ git pull <name>      : récupérer tous les changements et les appliquent
+    comme ça je peux mettre ma version à jour avec celle de <name> en utilisant ces 3 dernières commandes. 
+
+scenario: person A pushes to remote repo, you are person, B, you do git status, you won't see, 
+you have to do git fetch, to get the view of the remote branch, and then if you like, you merge, if you don't like you don't merge. 
+
+Fetch updates: Run git fetch to update your local view of the remote branch (e.g., origin/main) without modifying your current branch.
+Check status: Use git status to see if your local branch is behind origin/main.
+Pull changes: If needed, run git pull origin main to fetch and merge the latest changes into your local branch.    
+
+
+
+Comparing between branches : 
+>$ git diff main..feature
+
+Tutorials and extra 
+
+fast-forward merge: 
+    When you merge one branch into another in Git, sometimes Git performs what is called a "fast-forward" merge. This occurs when the branch you're merging into (let's say main) hasn't had any new commits since the branch you're merging in (let's say dev) was created.
+
+Pushing project to github 
+    -> git add . (staging all files in directory and sub directory)
+    -> git commit -m 'your message'
+    
+    -> git remote add github https:/github/path/toproject/name.git
+    -> git remote -v 
+    -> git push -f github master
+
+
+>$ git push <remote-name> <local-branch-name>:<remote-branch-name>
+-> example:
+    >$ git push origin test_branch
+    This command tells Git to push your local test_branch to the remote repository's test_branch. If the test_branch doesn't exist on the remote repository, Git will create it.
+    If you want to push your local branch to a differently named branch on the remote repository, you can specify it explicitly:
+    >$ git push origin local_branch_name:remote_branch_name
+
+
+How to interpret the git diff 
+    > diff --git : showing the difference between the source path a/ and target path b/
+    > the a file show the before version 
+    > the b file shows the after version
+
+
+
+
+Merge using GitHub cli 
+- add the original repo as an upstream remote 
+	>$ git remote add upstream https://github.com/original-owner/original-repo.git
+- create the pull request 
+	>$ gh pr create --base main --head your-branch-name --repo original-owner/original-repo --title "Your PR Title" --body "Description of the changes"
+		--base main: Specifies the branch you want to merge into on the original repository (usually main or master).
+		--head your-branch-name: Specifies your branch on your fork (the one with your changes).
+		--repo original-owner/original-repo: Specifies the original repository where you want to create the pull request.
+		--title: The title of your pull request.
+		--body: A description of the changes in the pull request
+
+
+- review and submit 
+	>$ gh pr view --web
+
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+    
+<style>
+svg {
+    outline: 1px solid red;
+}
+
+svg rect {
+        fill: orange;
+    }
+
+svg text {
+    fill:white;
+    font: 10px sans-serif;
+    text-anchor: end;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+
+
+div{
+    width: 100px; 
+    height: 100px;
+    background-color: black;
+}
+
+</style>
+<script src="d3.v7.js"></script>
+</head>
+<body>  
+    <svg class="chart" width="420" height="120">
+        <g transform="translate(0,0)">
+            <rect width="50" height="19"></rect>
+            <text x="47" y="9.5" dy=".35em">5</text>
+        </g>
+        <g transform="translate(0,20)">
+            <rect width="100" height="19"></rect>
+            <text x="97" y="9.5" dy=".35em">10</text>
+        </g>
+        <g transform="translate(0,40)">
+            <rect width="120" height="19"></rect>
+            <text x="117" y="9.5" dy=".35em">12</text>
+        </g>
+    </svg>
+
+<div></div>
+
+<script>
+
+
+var svg_w = 500; 
+var svg_h = 500; 
+
+    
+
+let body = d3.select("body")
+
+body.select("div")
+    .transition()
+    .duration(3000)
+    .style('background-color', 'red')
+    .text('It is turning red')
+    .transition()
+    .duration(2000)
+    .style('background-color', 'yellow')
+    .text('it is turning yellow')
+
+
+let svg = body.append('svg')
+    .attr('width', svg_w)
+    .attr('height', svg_h)
+
+svg.append('line')
+    .attr('x1',50)    
+    .attr('y1',50) 
+    .attr('x2',100)  
+    .attr('y2',100)      
+    .attr('stroke', 'black')
+
+
+svg.append('circle')
+    .attr('cx', 75)
+    .attr('cy', 75)    
+    .attr('r', 5)
+
+
+const  data = [5, 10, 12]
+
+const width = 200
+const scaleFactor = 10;
+
+const barHeight = 20;
+
+// creating the svg area for drawing
+graph = body.append('svg')
+    .attr('height', svg_h)
+    .attr('width', svg_w)
+    
+
+
+bars = graph.selectAll('g')
+    .data(data)
+    .enter()
+        .append('g')
+        .attr('transform', function(d,i){
+            return 'translate(0,'+ i* barHeight+')'
+        })
+
+// this will return an all g selections
+
+
+console.log('bars :', bars)
+
+bars.data(data)
+   
+bars.append("rect")
+        .attr("width", function(d){
+            return d* scaleFactor; 
+        })
+        .attr("height", barHeight -1)
+
+bars.append('text')
+    .attr("x", function(d) { return (d*scaleFactor); })
+    .attr("y", barHeight / 2)
+    .attr("dy", ".35em")
+    .text(function(d) { return d; });
+
+
+let scale = d3.scaleLinear()
+    .domain([d3.min(myData), d3.max(myData)])
+    .range([100,250])
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+

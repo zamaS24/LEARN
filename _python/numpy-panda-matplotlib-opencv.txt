@@ -1,0 +1,250 @@
++---------------------------------------------------------------+                                                               |
+|                          EXTRA BONUS                          |
++---------------------------------------------------------------+
+tuples :  tuples cannot be modified once they are created.(a,b,c)
+
+
+axis=0 refers to operations along the rows, or along the (n-1) dimension elements (i.e., applying a function to each column)
+axis=1 refers to operations along the columns (i.e., applying a function to each row)
+
+
+
+
++---------------------------------------------------------------+                                                               |
+|                           NUMPY                               |
++---------------------------------------------------------------+
+a = np.array([1,2,3,4,5])   #creating a numpy array
+a = np.array(python_list)   #convert a python list to numpy array
+a.shape a.dtype a.ndim a.size a.itemsize
+
++ * - / // % ** element wise
+
+np.sqrt(a)
+np.power(a, p )
+np.dot(a1,a2)
+np.argwhere(a%2==0)  returns the indices of the elements in an array that satisfy a certain condition.
+converting           a multi-dimensional array into a one-dimensional array
+np.arange(1,7)       numbers from 1 to 6
+c = np.hstack((a,b))            # H stack and vstack
+d = np.vstack((a,b))
+c = np.concatenate((a,b)) Concatenate 
+np.concatenate((a,b.T), axis = 1)  concatenation en colonne
+
+a.copy()        to copy an array
+
+np.zeros((2,3))
+np.ones((2,3))
+np.full((2,3), 5.0)
+np.eye(3)
+np.arange(20)
+np.count_nonzero(arr)       : to count number of non zero in an arry 
+
+
+bool_array = np.random.choice([True, False], size=N)
+np.random.random((3,2))
+np.random.randn(1000)   normale gaussiene
+np.random.randint(3,10,size=(3,3))
+
+a.sum()
+a.mean(axis=)   
+a.var()                     variance
+a.std(a, axis=None)         ecart type
+a.min()         
+a.max()         
+
+Jx, Jy = np.gradient(T)     gradient function 
+np.clip(arr, min, max) : will set values greater than max to max, and values smaller from min to min
+
+a.T                  Transpose
+np.linalg.inv(a)     Inverse, matrice should be square
+np.linalg.det(a)     Determinant of a
+np.diag(a)           Diagonal matrix return is array
+np.diag(np.diag(a))  Diagonal on array, returns matrix, of diagonal and other elements are zero
+
+slicing same as lists
+
+a[-1,-2]            negative indexes
+a[b]                It will return an array of the values of the index
+a[np.newaxis, :]    add an extra dimension to the array, in columns or rows
+a[:,np.newaxis]     
+
+
+-> np.flip(array, axis=None) : will reverse the order of the elements of the array
+-> np.where() : returns [i1,i2,i3,...,in], [j1,j2,j3,...,jn] that represents the elements indices where the condition is true
+    -> array([i1,i2,i3,...,in], [j1,j2,j3,...,jn]) = the array of those indices , if array is 2d, the result is 1d
+    -> extended syntax: np.where(condition, x, y) , 
+        -> x are values to choose where condition is true
+        -> y are values to choose where condition is false
+        -> x and y should have the same dimension
+
+
+np.fromfile(<filename>, <dtype>) # reading a raw array from data 
+
+
+
++---------------------------------------------------------------+                                                               |
+|                           PANDAS                              |
++---------------------------------------------------------------+
+df = pd.read_csv('pokemon_data.csv', index_col=0)
+df = pd.read_csv('pokemon_data.csv', delimiter='\t')    
+pd.DataFrame({'Bob': ['I liked it.', 'It was awful.'], 
+              'Sue': ['Pretty good.', 'Bland.']},
+             index=['Product A', 'Product B'])
+pd.Series([30, 35, 40], index=['2015 Sales', '2016 Sales', '2017 Sales'], name='Product A')
+
+
+df.columns                                      Read the headers
+df.head(4)                                      the frist 4 rows
+df.tail(4)                                      the last 4 rows
+
+pd.set_option('display.max_rows', 5)
+df.['column_name'][0:5]                         this will return only from 0 to 5 rows of the each column name
+df.[['col1', 'col2', 'col3', 'col4']][3:45]     The slicing through rows is optional
+
+df.iloc[1]                                      will give you everything in that first row
+df.iloc[1:4]                                    a way of grabing rows
+
+df.iloc[1,4]                                    Read specific row column
+
+for index , row in df.iterrows(): 
+    print("index: ", index, "row: ", row['Name'])
+
+df.loc[df['Type 1'] == "Fire"]                  Condition
+
+df.describe()                                   Statistics about the dataframe
+_                                              count, mean, std, min, 25%, 50%, 75%, max
+
+df.sort_values()
+
+df['New_column'] = df['column_1'] + ..etc.      making change and add new column
+
+df = df.drop(columns=['Total'])
+
+
+
+
++---------------------------------------------------------------+                                                               |
+|                           MATPLOTLIB                          |
++---------------------------------------------------------------+
+
+creating subplots
+    plt.subplot(num_row, num_cols)
+    plt.imshow(num_row, num_col, img)
+
+
+to make the labelings outside of the plot area: 
+    -> plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+
+set the width and height of the figure 
+    -> plt.figure(figsize = (20,4), dpi = 100) 
+or 
+    -> fig, ax = plt.subplots(..., figsize =(20,4))
+       returns one figure, and multiples axes 
+       ax[0,0].plot([1,2,3])
+
+       fig, ax = plt.subplots(//no_params): returns one fig and one axes
+
+    
+    -> fig, ax = plt.subplot(1, 5, figsize=(20, 5)) 
+       be careful here we don't have ax[][] but it's a 1d array 
+       plt.subplot(2,2,1) : create a grid of 2,2, and select the plot num 1
+       plt.subplot(2,2,2): selecting the plot numer 2
+
+- set borders to figures 
+    fig.patch.set_linewidth(5)        # Border width
+    fig.patch.set_edgecolor('black') 
+
+
+- drawing arrows that shows for example the gradient vector directions 
+    step = 5
+    for i in range(0, T.shape[0], step):
+        for j in range(0, T.shape[1], step):
+            plt.quiver(j, i, Jx[i, j], Jy[i, j], angles='xy', scale_units='xy', scale=1, color='r')
+
+
++---------------------------------------------------------------+                                                               |
+|                           OPENCV                              |
++---------------------------------------------------------------+          
+Normalement à chaque fois que ça marche on va le voir. 
+data frame the rows the columns axis
+
+
+We have the skimage library too, which is very interesting
+
+
+-> histogram equalization 
+-> histogram stretching 
+-> Otsu segmentation 
+-> RBG to Hsv
+-> masking 
+
+
+
+
+- Morphology 
+skimage.morphology.square()
+skimage.morphology.diamond() 
+
+V8 = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))  # 3x3 square
+
+
+cv2.imread('name', img)
+cv2.imshow('window_name', img)
+cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+
+
+cv2.subtract(img1, img2) to subtract imagges: 
+
+-Bitwise operations : 
+    - and, or, xor
+    - cv2.bitwise_or(img2, img1, mask=None)
+    - cv2.bitwise_and(img2, img1, mask=None)
+    - cv2.bitwise_not(img, mask=None)
+
+- Recizing an image 
+    - cv2.resize(img, new_shape , interpolation = cv2.INTERL_LINEAR) new_shape like (new_w, new_h)
+
+
+Morphological operation: 
+    - cv2.erode(img, kernel)
+    - cv2.dilate(img, kernel)
+
+Blurring: 
+    - cv2.GaussianBlur(img, kernel, 0)
+    - cv2.medianBlur(img, 5)
+    - cv2.bilateralFilter(img, 9, 75, 75)
+
+Making borders 
+    - cv2.makeBorder(img, 200, 100, 50, 50, cv2.borderconstant...) : check the docs 
+
+
+Drawing on the image 
+    - Drawing a rectangle 
+        -> cv2.rectangle(image, start_point, end_point, color, thickness) 
+
+    - Drawing a line ... etc
+
+Affine transformations on image :
+        -> cv2.warpAffine(image,rgb, translation_matrix, (width, height))
+        
+        -> basically it can be translation matrix, rotation matrix, ... etc
+
+
+Edge detection : 
+        -> cv2.Canny(image, ... etc)
+        ->  
+
+Thresholding pronounced (Thresh hold ing): 
+    - cv2.threshold(img, 120, 255, cv2.THRESH_BINARY) : the last parameters varies
+
+
+Morphological opening and closing  
+    - opening = cv2.
+
+
+show video feed 
+    - cap = cv2.VideoCapture(0): the 0 is a parameter for the device
+    - ret, frame = cap.read()
+    - cap.release() : # release the webcame 
+

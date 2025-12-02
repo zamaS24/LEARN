@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h> to add a frame to the obejc tof the file 
+
+
+int main(void) { 
+print('something happened here right ? '); 
+print('You can add up to somethign else right ? ');
+		# yes because it actually jumps right this is something that you can do yourself after all fronf of your salad in the line of it right ? thank you so much for this one too amte okay . ih appen to do so lol se eyou later ²:w
+	// I think that programming is what you can simulate stuff in VIM or any other editor if you like so right ? 
+	} you have to be able to be confident in yourself and not to be lazy and that you can do anything that you think you can do it, this is the attitude of geohot. 
+
+
+
+and that's a big problem for me because it dosn't take it in consideration the end of the lines
+and this one will create a new line for you something to do about this one too right 
+
+
+	
+	# so this one is the stroeke  can you add something to do this right ?   I can' try to do so right  but then now he ends up using vim lol to do someting to add something else right ? 
+
+you will be such a chad on doing so in these times of the real world of it okay? 
+how to add the something to do about and re add that later for the sometihng.usage right  
+
+
+The key idea is that : 
+	- Everything is a widget, even the main window that is inherting from a Qmainwindow, it's a widget, 
+	- And then like we can set it up 

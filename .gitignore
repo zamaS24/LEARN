@@ -1,0 +1,11 @@
+# Ignore all data folders
+data/
+*/data/
+
+# Ignore all node_modules folders
+node_modules/
+*/node_modules/
+
+# Optional: common extras
+.DS_Store
+.env

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta lang="fr">
+
+
+
+    <title>Test document</title>
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+   
+    
+<nav>
+    <li>
+        <ul id="apple"><a href="#section"><img src="apple.svg" alt="apple logo" width="30px"></i></a></ul>
+        <ul><a href="#about">About</a></ul>
+    </li>
+</nav>
+
+
+<!-- <button onclick="add_Div()">Add item</button> -->
+
+<div id ="section s"class="container">
+    <div class="item"><span>Item 1</span></div>
+    <div class="item"><span>Item 2</span></div> 
+    <div class="item"><span>Item 3</span></div>
+    <div class="item"><span>Item 4</span></div>
+    <div class="item"><span>Item 5</span></div>
+</div>
+
+<!-- 
+<div class="flex-column">
+    <div class="item"><span>Item 1</span></div>
+    <div class="item"><span>Item 2</span></div>
+    <div class="item"><span>Item 3</span></div>
+    <div class="item"><span>Item 4</span></div>
+    <div class="item"><span>Item 5</span></div>
+    <div class="item"><span>Item 1</span></div>
+    <div class="item"><span>Item 2</span></div>
+    <div class="item"><span>Item 3</span></div>
+    <div class="item"><span>Item 4</span></div>
+    <div class="item"><span>Item 5</span></div>
+    <div class="item"><span>Item 1</span></div>
+    <div class="item"><span>Item 2</span></div>
+    <div class="item"><span>Item 3</span></div>
+    <div class="item"><span>Item 4</span></div>
+    <div class="item"><span>Item 5</span></div>
+    <div class="item"><span>Item 1</span></div>
+    <div class="item"><span>Item 2</span></div>
+    <div class="item"><span>Item 3</span></div>
+    <div class="item"><span>Item 4</span></div>
+    <div class="item"><span>Item 5</span></div>
+    <div class="item"><span>Item 1</span></div>
+    <div class="item"><span>Item 2</span></div>
+    <div class="item"><span>Item 3</span></div>
+    <div class="item"><span>Item 4</span></div>
+    <div class="item"><span>Item 5</span></div>
+</div> -->
+
+<div class="overflow"> 
+    <div class="overflowed"> 
+    </div>
+    
+</div>
+
+<footer id="about">
+    copyrights reserved, ibs spa. 
+</footer>
+
+<!-- Learn the necessary stuff -->
+
+<script>
+
+let curr_id = 6
+
+function add_Div(){
+    console.log('add div here: ')
+    // since there is only one element so let's get the one at index [0]
+    let container  = document.getElementsByClassName('container')[0];
+
+    let item = document.createElement('div');
+    item.addEventListener("click", function() {
+        alert("Div clicked!");
+    }); 
+    item.className = 'item'; 
+    
+    let paragraph = document.createElement('p')
+    paragraph.textContent = 'Item '+`${curr_id}`
+    
+
+    item.appendChild(paragraph)
+    curr_id = curr_id + 1; 
+
+
+    container.appendChild(item);
+    console.log('yup')
+
+}
+
+</script>
+
+
+</body>
+</html>

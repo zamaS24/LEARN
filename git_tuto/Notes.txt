@@ -1,0 +1,119 @@
+-> Git c'est pour la gestion de versions, il n'est pas destiné seulement pour les developpeurs. 
+-> IMPORTANT : Chaque chose qu'on fait. On doit commiter le changement. 
+
+-> master vs origin master 
+    -> "master": In Git, "master" typically refers to the default branch name that is created when you initialize
+        a new Git repository or when cloning a repository that has a branch named "master".
+    -> "origin/master": The term "origin" refers to a remote repository. When you clone a Git repository from
+        a remote source, Git automatically sets up a remote named "origin" that points to the repository you cloned from.
+
+
+
+1 ------------ [CONFIGURATION]
+Voir le fichier .gitconfig dans users/monms
+>$ git config --global user.name "omarihamza"
+>$ git config --global user.email "omarihamza2000@gmail.com"
+
+
+
+
+2 ------------ [GESTION DEPOT]
+- Un dépot c'est un repertoire. 
+ Comme dans linux on utilise des / pour les chemins
+
+- Initialiser un dépot git
+    >$ git init 
+    apres cette commande on va trouver (master) à coté du terminal. 
+    Il va creer un dossier caché .git
+
+- Un fichier a trois états: 
+    etat de modification : En cours de modification travailler dessus
+    etat de stage : Pres a etre sauvegardé (Staging a file)
+    etat commit : quand on l'a terminer et qu'on veut l'ajouter a l'historique. 
+
+- Ajouter le fichier au sein de l'historique: 
+    >$ git add <nomfichier>    // Il va le mettre dans la zone de stage Area. 
+
+- Commiter le fichier (on veut le sauvegarder le prendre en compte dans lhistorique de git donc le depot)
+    >$ git commit -m "Le message qu'on veut ecrire". 
+
+- Voir l'historique 
+    >$ git log 
+    >$ git log <branch-name>
+    >$ git log --graph
+    >$ git log -- <file>
+
+
+- Autres commandes 
+    >$ git add --all * : préparer à sauvegarder tous les fichiers 
+        exemple: ajouter quinze fichiers à la fois. 
+    >$ git commit -a -m "mon message"  : ajouter le fichier en questions et le commiter. 
+
+    >$ git mv <fichier> <nouveau>   : déplacer renomer le fichier. 
+    >$ git rm <fichier> : supprimer le fichier.
+
+    >$ git status : tous ce qui n'est pas encore commité. Il l'indique par : changes to be committed : et il va lister 
+        les fichiers qui sont prets à etre commit. 
+    >$ git diff <commit1> <commit2> : comparer deux comits
+    >$ git show <id_commit> : pour voir les détails de ce commit. 
+    >$ git show --name-only <commit-hash> : this one will specifies only the names of the files. 
+
+    >$ git clone <chemin/lien> [nom] : Cloner un depot de git hub et le nommer par exemple
+    >$ git pull : mettre a jour, synchroniser notre version avec la plus recente
+    >$ git push origin master : on va pusher vers la branche principale du depot l'ensemble des modifications
+        qui ont été faites. 
+
+    >$ git reset -hard HEAD : annuler tous les changements qui ont été spéicfié depuis le dernier commit.
+    >$ git reset -hard HEAD^ : supprimer juste ce qui a été fais depuis le dernier commit. 
+    >$ git revert <id_commit> : Remmetre le depot à l'etat dans ce commit. 
+    
+
+
+
+--------------- [Git avancé les branches]
+HEAD -> master 
+master c'est la branche principlae
+HEAD  est un pointeur
+
+- L'avantage de créer une autre branche c'est de pouvoir d'une manière parallèle modifier le projet
+    sans affecter la branche principale. ça peut servir dans plusieurs cas. 
+    exemple: corriger un beug. On a pas envie de casser le projet principale, casser le travail qui a été fait. 
+    on va créer une branche parallèle, une fois qu'on a corrigé le beug, on va fusioner avec la branche principale. 
+    exemple: Pour tester des fonctionalités, pour ajouter d'une fonctionalitée... etc. 
+
+
+>$ git branch   : pour lister les branches. (Dans le résultat étoile c'est le pointeur vers la branche courante)
+>$ git branch <name> : pour créer une branche.
+>$ git checkout <branch_name> : pour switcher vers la branche <branch_name>
+>$ git merge <nom_branche> : pour fusionner <nom_branche>
+    exemple: Deux branches (dev) et (master) 
+    dans la branche (dev) on va modifier le fichier index.html
+    puis on execute >$ git checkout master 
+    puis on execute >$ git merge dev
+>$ git branch -d <branch_name> : pour supprimer le branche <branch_name>    
+
+>$ git remote add <name> https://<chemin_vers_depot> :récupérer les changements d'un dépôt distant de quelqu'un
+>$ git fetch <name>     : récupérer l'acces au dépot
+>$ git pull <name>      : récupérer tous les changements,
+    comme ça je peux mettre ma version à jour avec celle de <name> en utilisant ces 3 dernières commandes. 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

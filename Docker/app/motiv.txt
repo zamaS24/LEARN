@@ -1,0 +1,13 @@
+Madame, Monsieur,
+
+Actuellement en Master Biométrie et Vision Intelligente à l’UPEC, et titulaire d’une Licence en Génie Logiciel ainsi que d’un Master en Intelligence Artificielle et Vision par Ordinateur de l’USTHB, je suis particulièrement enthousiaste à l’idée de rejoindre votre équipe pour contribuer au projet WaveCare. Ce projet, qui vise à détecter le cancer du sein grâce à l’imagerie micro-onde et à l’intelligence artificielle, allie parfaitement vision par ordinateur et traitement du signal, des domaines qui correspondent à mes compétences techniques et à mes aspirations professionnelles.
+
+Ma formation en intelligence artificielle, traitement du signal et vision par ordinateur m’a permis d’acquérir des compétences solides, notamment en analyse de signaux complexes, en traitement d’images et en utilisation d’algorithmes d’apprentissage automatique. J’ai notamment participé à des projets impliquant la détection de caractéristiques dans des signaux biologiques, tels que les signaux ECG, ainsi qu’à l’application de techniques de classification et de régression via des réseaux de neurones et des modèles d’apprentissage profond. De plus, j’ai développé une solide expérience en modèles basés sur les LLM (Large Language Models) lors de mon dernier stage.
+
+Ces compétences me permettent aujourd’hui de traiter des données brutes, d’extraire des caractéristiques pertinentes et de concevoir des solutions algorithmiques robustes. Je suis également capable de développer du code performant, respectant les bonnes pratiques du génie logiciel, afin de répondre aux exigences des projets les plus exigeants.
+
+Par ailleurs, mes connaissances approfondies en Deep Learning et Machine Learning sont soutenues par une maîtrise avancée de Python, de scikit-learn, ainsi que de PyTorch et d’autres outils essentiels pour développer des modèles prédictifs performants. Mon expertise en génie logiciel me permet de garantir des solutions évolutives, maintenables et adaptées aux besoins des projets intégrant l’IA et la vision par ordinateur. Enfin, je suis habitué à utiliser des outils de visualisation tels que Matplotlib pour l’évaluation et l’interprétation des résultats obtenus.
+
+Je serais ravi de pouvoir discuter plus en détail de la manière dont mes compétences et mon expérience pourraient contribuer au succès du projet WaveCare. Je reste à votre disposition pour un entretien à votre convenance.
+
+Dans l’attente de votre réponse, je vous prie d’agréer, Madame, Monsieur, mes salutations distinguées.

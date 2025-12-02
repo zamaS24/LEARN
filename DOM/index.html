@@ -1,0 +1,198 @@
+<!--
+    [MY NOTES]
+    -> You can access an element inside another element by : 
+        -> getting the parent element for example in x
+        -> getting the desired element with x.getElementBy...("DesiredElement)
+    -> to create an element and add it you have 
+        -> first create it with the document.createElement()
+-->
+
+<!--
+    [3SCHOOLS NOTES]
+    [adding elements to the page]
+    -> FINDING ELEMENTS : 
+        ->document.getElementById(id);          by ID
+        ->document.getElementByTagName(name);   by tag name
+        ->document.getElementByClassName(name);by class name
+
+    -> Changing HTML elements 
+        ->element.innerHTML = new HTML content 
+        ->element.attribute = new value
+        ->element.style.property = new style
+        //methods 
+        ->element.setAttribute(attribute, value)
+
+    -> Adding and deleting elements
+        ->document.createElement(element)	
+        ->document.removeChild(element)	
+        ->document.appendChild(element)	
+        ->document.replaceChild(new, old)	
+        ->document.write(text)	    
+    
+    -> Adding events handlers
+        ->document.getElementById(id).onclick = function(){code}
+
+
+    -> we can apply those elements not only for document. for any element. 
+-->
+
+<!--
+            [WEB DEV SIMPLIFIED NOTES]
+    -> document.body and we access the body for example. 
+    -> documet.append() and we can pass what we cant
+
+    [create a new element with append]
+    -> const x = document.createElement(<tag>); 
+    -> body.append(x)
+
+    ->textcontent vs innertext
+        ->textcontent touche seulement aux text pas aux balises
+        -> innertext touche a tout ce qui est dedans les balises.
+    -> innertext vs innerhtml 
+        ->innertext is more secure
+
+    [MODIFY ELEMENT HTML]
+
+    [MODIFY ELEMENT TEXT]
+    <span> is an inline container to mark up a part of a text
+    use innerText or innerHTML
+
+    [remove element]
+    element.remove()
+
+    [modify elment attribute]
+    ->element.getAttribute("attribute")
+    ->element.attribute  (better than this up)
+    ->element.setAttribute("attribute", "value")
+    ->element.removeAttribute("attribute")
+
+
+    [MODIFYING ELEMENT CLASSES]
+    ->element.classList.add('new classname') : to add new class
+    ->element.classList.remove("classname") : to remove
+    ->element.classList.toggle("classname",| true||false) remove it or add it if it exist
+        ->true for automatically remove it
+        ->false for automatically add it
+    ->modify css
+        ->element.style.property = ; 
+
+    
+    [DOM ELEMENTS TRAVERSAL]
+    ->getElementById("id"); we can have only one element that's why we use ID
+    ->getElementsByClassName("parent")
+        -> This method always returns a collection, so the foreach method doesn't work on it
+        -> we have to use Array.from(document.getElementsByClassName("parent"))
+
+    ->document.querySelector("selector")
+        ->selector is like the selector in css
+        -> It always returns one even if there's many. exemple .parent
+    
+    ->document.querySelectorAll("selctor")
+        ->This one return them all 
+        ->consistent and easy to work with. 
+        -> marche direct avec .forEach(callback)
+
+    ->How to get the children of an element? 
+        -> get the element first : for example grandparent = document.querySelector(".grandparent")
+        -> now use :   grandparent.children, this returns all the children
+        -> it has to be converted to array (Array.from) to use foreach method
+        -> after converting it to array we can get it's children like this also: 
+            -> parent1 = parents[0]
+        
+        
+        ->all the methods we have used before not only work in document. but 
+            also in elements
+            -> child = parent.querySelector(".firstchild");
+        
+        ->selecting parents
+            ->parent = child.parentElement
+
+        ->selecting ancesstors
+            -> use the method: child.closest(selector)
+            -> it gets the closest ancestor that has the selector
+        
+        ->selecting siblings
+            ->childOne.nextElementSibling
+            ->previousElementSibling
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>  
+    <link rel="stylesheet" href="style.css">   
+</head>
+<body>
+    
+    <div class="grandparent" id="grandparent-id">
+      <div class="parent">
+         <div class="child" id="child-one"></div>
+         <div class="child"></div>
+       </div>
+      <div class="parent">
+        <div class="child"></div>
+         <div class="child"></div>
+       </div>
+    </div>
+
+    
+
+    <button type="button" onclick="execute1()">Execute</button>
+
+    <!--Link to the script-->
+    <script src="script.js" ></script>
+</body>
+   
+<!--body>
+    
+
+    <table>
+        <tr>
+            <th>FIRST</th>
+            <th>SECOND</th>
+            <th>THIRD</th>
+        </tr>
+        <tr>
+            <td>one</td>
+            <td>two</td>
+            <td>three</td>
+        </tr>
+    </table>
+    <div class="container" id="container" >
+        <ul>
+            <li>Here's my first</li>
+            <li>Here's my second</li>
+            <li>Here's my third</li>
+        </ul>
+        
+        <div class="navBar">
+           
+            <table id="myTable">
+                <tr>
+                    <th>first</th>
+                    <th>second</th>
+                    <th>third </th>
+                </tr>
+                <tr>
+                    <td>fl1</td>
+                    <td>fl2</td>
+                    <td>fl3</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <p id="demo">
+    </p>
+
+    
+    <button type="button" onclick="execute()">Execute</button-->
+    
+    <script src="script.js" ></script>
+</body>
+</html>

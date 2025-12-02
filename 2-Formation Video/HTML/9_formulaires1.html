@@ -1,0 +1,44 @@
+<!--
+    - il ya plusieurs attributs aves form. 
+    - <form method="get">. les champs dans l'URL avec le & commercial. 
+    - <form method="post">. Injecter dans le formulaires. 
+    -Attribut action 
+    - <form method="post" actoin="">
+    - attribut target, autocompele, accept-charset, 
+
+    -<tagname name> : the name attribute is for the data associated with the form. 
+-->
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta char="utf-8">
+        <title> FV HTML Formulaires 1/2</title>
+    </head>
+    <body>
+        
+        <form method="post" action="" name="Mon Formulaire" >
+            <p><label for="Prenom">Name</label> <input id="Prenom" name="username" placeholder="Entrez votre nom" type="" required></p>
+            <!-- le label pour que l'orsque tu clique sur la touche tab tu tombes directe sur le champs 
+                de saisie.
+                -L'attribut type est tres important. 
+
+            -->
+            <input type="password" name="champs formulaire">
+            Publier la news ? <input type="checkbox" name="Publish news">
+            Votre choix <input type="radio" name="choice"> oui <input type="radio" name="choice"> Non <br>
+            Votre saisie <input type="radio" name="chichi"> <br>
+            <input type="color" name="Field_form" value="FFFFA"> <br>
+            <input type="date" name="date saisie"><br>
+            <input type="datetime-local" name="datelol"><br>
+
+            <!-- Il ya enormement de type de saisie. tip Ctrl+ f5 pour raffraichir le cache-->
+            <input type="submit" value ="Supprimer"><input type="submit" value ="Se connecter">
+            nom : <input type ="text" name="field form" pattern="" required ><br>
+            <!-- Tres immportant 
+                Il peut quelqu'un par exemple d'afficher le code source et puis il envoie le formulaire
+                en enlevant le code du pattern. Donc il faut vraimen mettre en oeuvre la securite 
+                au niveau du langage de programmation. -->
+        </form>
+    </body>
+</html>
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html {
+            outline: 3px solid black;
+        }
+
+        body {
+            background-color: bisque;
+            width: 1000px;
+            height: 1000px;
+            margin: auto;
+        }
+
+        svg {
+            margin: auto;
+            padding-bottom: 5px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h1>Visualisation de tri par permutation</h1>
+    <script>
+        const N = 10;
+        let dataArray = Array.from({ length: N }, () => Math.floor(Math.random() * N) + 1);
+        let width = 500;
+        let height = 500;
+        let padding = 20;
+    
+        let svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+        
+
+        let x = d3.scaleBand()
+            .range([padding, width - padding])
+            .domain(dataArray.map((d, i) => i))
+            .padding(0.05);
+    
+        const y = d3.scaleLinear()
+            .range([height - padding, padding])
+            .domain([0, d3.max(dataArray)]);
+    
+
+        let bars = svg.selectAll("rect")
+            .data(dataArray)
+            // Pour chaque valeur de data
+            .enter()
+                // créer le rectangle
+                .append("rect")
+                    .attr("x", (d, i) => x(i))
+                    .attr("y", d => y(d))
+                    .attr("width", x.bandwidth())
+                    .attr("height", d => height - padding - y(d))
+                    .attr("fill", "#FF5555");
+    
+        let currentIndex = 0;
+        let swapped = false;
+    
+        function Permutationsort() {
+            if (currentIndex < dataArray.length - 1) {
+                if (dataArray[currentIndex] > dataArray[currentIndex + 1]) {
+                    // Permutation
+                    const tempX = x(dataArray[currentIndex]);
+                    x.domain(dataArray.map((d, i) => i)); // Mettre à jour le domaine de l'échelle x
+    
+                    bars.transition()
+                        .attr("x", (d, i) => x(i)) // Animer la position x des barres
+                        .ease(d3.easeCircle)
+                        .duration(500);
+    
+                    dataArray[currentIndex] = dataArray[currentIndex + 1];
+                    dataArray[currentIndex + 1] = tempX;
+                    swapped = true;
+                }
+                currentIndex++;
+    
+                if (currentIndex === dataArray.length - 1) {
+                    if (!swapped) {
+                        clearInterval(interval);
+                    }
+                    currentIndex = 0;
+                    swapped = false;
+                }
+            }
+        }
+    
+        function start() {
+            console.log('Starting of the sort process');
+            let interval = setInterval(() => {
+                Permutationsort();
+            }, 3000);
+        }
+    
+        let xAxis = d3.axisBottom(x).ticks(10);
+        let yAxis = d3.axisLeft(y).ticks(10);
+        svg.append("g")
+            .attr("transform", "translate(0, " + (height - padding) + ")")
+            .call(xAxis);
+        svg.append("g")
+            .attr("transform", "translate(" + padding + ", 0)")
+            .call(yAxis);
+    </script>
+    
+
+    <button onclick="start()">Trier les éléments</button>
+</body>
+</html>

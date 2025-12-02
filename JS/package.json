@@ -1,0 +1,13 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "type": "module",
+
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "description": "A folder where I test all of the node js stuff",
+  "author": "OMARI Hamza",
+  "license": "ISC"
+}
